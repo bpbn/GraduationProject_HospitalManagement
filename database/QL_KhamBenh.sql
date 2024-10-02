@@ -748,11 +748,11 @@ INSERT INTO TAIKHOAN VALUES ('ltl500', '666');
 INSERT INTO TAIKHOAN VALUES ('tvk501', '666');
 
 
-INSERT INTO QUYEN VALUES ('ADMIN', N'Quy?n dành cho qu?n lý');
-INSERT INTO QUYEN VALUES ('PATIENT', N'Quy?n dành cho b?nh nhân');
-INSERT INTO QUYEN VALUES ('CASHIER', N'Quy?n dành cho nhân viên thu ngân');
-INSERT INTO QUYEN VALUES ('RECEIVING', N'Quy?n dành cho nhân viên Ti?p nh?n');
-INSERT INTO QUYEN VALUES ('DOCTOR', N'Quy?n dành cho bác s?');
+INSERT INTO QUYEN VALUES ('ADMIN', N'Quyền dành cho quản lý');
+INSERT INTO QUYEN VALUES ('PATIENT', N'Quyền dành cho bệnh nhân');
+INSERT INTO QUYEN VALUES ('CASHIER', N'Quyền dành cho nhân viên thu ngân');
+INSERT INTO QUYEN VALUES ('RECEIVING', N'Quyền dành cho nhân viên Tiếp nhận');
+INSERT INTO QUYEN VALUES ('DOCTOR', N'Quyền dành cho bác sĩ');
 
 INSERT INTO PHANQUYENTAIKHOAN VALUES ('quanly', 'ADMIN');
 INSERT INTO PHANQUYENTAIKHOAN VALUES ('nhuquynh', 'CASHIER');
