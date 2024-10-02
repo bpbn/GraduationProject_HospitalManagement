@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url : jdbc:oracle:thin:@//localhost:1521/orcl2
+    username: C#BPBN
+    password: 123
+
+server:
+  port: 1314
