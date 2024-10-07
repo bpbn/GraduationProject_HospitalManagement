@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+// Variables
+$primary-color: #148068;
+$font-family: Roboto, "Helvetica Neue", sans-serif;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: $font-family;
+}
+
+// Mixins
+@mixin background-color($color) {
+  background-color: $color;
+}
+
+@mixin text-color($color) {
+  color: $color;
+}
+
+// Utility classes
+.backgroundcolor {
+  @include background-color($primary-color);
+}
+
+.textcolor {
+  @include text-color($primary-color);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
