@@ -19,7 +19,7 @@ public class PhieuDangKyDAO {
 
     public String generateMaPDK() {
         String prefix = "PDK";
-        String lastMaPDK = phieuDangKyRepository.findTopByOrderByMaPhieuDangKyDesc();
+        String lastMaPDK = phieuDangKyRepository.findMaxMaPhieuDangKy();
 
         if (lastMaPDK == null) {
             return prefix + "0000"; // Nếu chưa có mã nào, trả về PDK0000

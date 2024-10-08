@@ -23,7 +23,7 @@ export class CardDatlichComponent implements OnInit {
   showDate: boolean = false;
   doctors: any[] = [];
 
-  phObj: any = {
+  pdk: any = {
     maPhieuHen: '',
     tenBenhNhan: '',
     ngaySinh: '',
@@ -67,9 +67,9 @@ export class CardDatlichComponent implements OnInit {
   showDateSection() {
     this.showDoctor = false;
     this.showDate = true;
-    this.phObj.bacSi = ''; 
-    this.phObj.ngayKham = '';
-    this.phObj.khungGioKham = '';
+    this.pdk.bacSi = ''; 
+    this.pdk.ngayKham = '';
+    this.pdk.khungGioKham = '';
   }
 
   loadAllDoctors() {
@@ -83,19 +83,19 @@ export class CardDatlichComponent implements OnInit {
   }
 
   onDateChange() {
-    if (this.phObj.ngayKham && this.phObj.khungGioKham) {
+    if (this.pdk.ngayKham && this.pdk.khungGioKham) {
       this.getBacSiByDateAndShift();
     }
   }
 
   onShiftChange($event: any) {
-    if (this.phObj.ngayKham && this.phObj.khungGioKham) {
+    if (this.pdk.ngayKham && this.pdk.khungGioKham) {
       this.getBacSiByDateAndShift();
     }
   }
 
   getBacSiByDateAndShift() {
-    this.http.get<any[]>(`${this.doctorsApiUrl}?ngayLam=${this.phObj.ngayKham}&caLam=${this.phObj.khungGioKham}`)
+    this.http.get<any[]>(`${this.doctorsApiUrl}?ngayLam=${this.pdk.ngayKham}&caLam=${this.pdk.khungGioKham}`)
       .subscribe(response => {
         console.log('Bác sĩ theo ngày và ca làm:', response);
         this.doctors = response;
@@ -106,8 +106,8 @@ export class CardDatlichComponent implements OnInit {
 
 
   onDoctorChange() {
-    if (this.phObj.bacSi) {
-      this.http.get<any[]>(`${this.dateApiUrl}?maNhanVien=${this.phObj.bacSi}`)
+    if (this.pdk.bacSi) {
+      this.http.get<any[]>(`${this.dateApiUrl}?maNhanVien=${this.pdk.bacSi}`)
         .subscribe(response => {
           console.log('Ngày làm việc của bác sĩ:', response);
           this.workingDays = response.map(item => {
@@ -122,8 +122,8 @@ export class CardDatlichComponent implements OnInit {
   }
  
   getShiftByDateAndDoctor() {
-    const currentDoctor = this.phObj.bacSi; 
-    const selectedDate = this.phObj.ngayKham;
+    const currentDoctor = this.pdk.bacSi; 
+    const selectedDate = this.pdk.ngayKham;
     console.log('Gọi API với maNhanVien:', currentDoctor, 'và ngayLam:', selectedDate);
     this.http.get<string[]>(`${this.shiftApiUrl}?maNhanVien=${currentDoctor}&ngayLam=${selectedDate}`)
       .subscribe(response => {
@@ -138,8 +138,8 @@ export class CardDatlichComponent implements OnInit {
   onShiftChange2(event: any) {
     const selectedDate = event.value;
     console.log('Ngày được chọn:', selectedDate);
-    if (this.phObj.bacSi && selectedDate) {
-      this.phObj.ngayKham = this.formatDate(selectedDate);
+    if (this.pdk.bacSi && selectedDate) {
+      this.pdk.ngayKham = this.formatDate(selectedDate);
       this.getShiftByDateAndDoctor();
     }
   }
@@ -164,8 +164,8 @@ export class CardDatlichComponent implements OnInit {
 
   themPhieuHen() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    console.log('Dữ liệu gửi đến API:', this.phObj);
-    this.http.post<string>(this.apiUrl, this.phObj, { headers }).subscribe(
+    console.log('Dữ liệu gửi đến API:', this.pdk);
+    this.http.post<string>(this.apiUrl, this.pdk, { headers }).subscribe(
       response => {
         console.log('Phản hồi từ server:', response);
       },
@@ -194,8 +194,8 @@ export class CardDatlichComponent implements OnInit {
 
   // isFormValid(): boolean {
   //   // Kiểm tra các điều kiện của form, ví dụ:
-  //   return this.phObj.tenBenhNhan && this.phObj.ngaySinh && this.phObj.gioiTinh && this.phObj.sdt &&
-  //    this.phObj.diaChi && this.phObj.bacSi && this.phObj.ngayKham && this.phObj.khungGioKham;
+  //   return this.pdk.tenBenhNhan && this.pdk.ngaySinh && this.pdk.gioiTinh && this.pdk.sdt &&
+  //    this.pdk.diaChi && this.pdk.bacSi && this.pdk.ngayKham && this.pdk.khungGioKham;
   // }
   
 }
