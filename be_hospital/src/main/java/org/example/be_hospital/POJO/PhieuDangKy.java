@@ -19,13 +19,16 @@ public class PhieuDangKy {
     private String trangThaiThanhToan;
     private String maBenhNhan;
     private String NVLap;
+
+    @ManyToOne
+    private LichLamViec lichLamViec;
+
     private String NVThanhToan;
     private String tinhTrangSucKhoe;
     private String STTTiepNhan;
     private String STTKham;
     private String hinhThucDangKy;
 
-    @ManyToOne
-    private LichLamViec lichLamViec;
+
 
 }

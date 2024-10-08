@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PhieuDangKyReponsitory extends JpaRepository<PhieuDangKy,String> {
 
-    @Query("SELECT pdk.maPhieuDangKy FROM PhieuDangKy pdk ORDER BY pdk.maPhieuDangKy DESC")
-    String findTopByOrderByMaPhieuDangKyDesc();
+    @Query("SELECT MAX(maPhieuDangKy) FROM PhieuDangKy")
+    String findMaxMaPhieuDangKy();
 }
