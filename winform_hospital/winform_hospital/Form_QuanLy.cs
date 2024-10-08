@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace winform_hospital
+namespace winform_hospital.UC
 {
-    public partial class Form1 : Form
+    public partial class Form_QuanLy : Form
     {
-        public Form1()
+        public Form_QuanLy()
         {
             InitializeComponent();
+        }
+
+        private void Form_QuanLy_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
