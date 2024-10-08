@@ -16,5 +16,11 @@ namespace BLL
         {
             return phongDAL.LayPhong();
         }
+
+        // Lấy tên phòng từ mã phòng
+        public string LayTenPhong(string maPhong)
+        {
+            return phongDAL.LayTenPhong(maPhong);
+        }
     }
 }

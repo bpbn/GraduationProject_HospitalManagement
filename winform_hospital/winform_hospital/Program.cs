@@ -17,7 +17,7 @@ namespace winform_hospital
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_QuanLy());
+            Application.Run(new Form_TiepNhan());
         }
     }
 }

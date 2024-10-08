@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BacSiBLL.cs" />
+    <Compile Include="BenhNhanBLL.cs" />
     <Compile Include="LichLamViecBLL.cs" />
+    <Compile Include="PhieuDangKyBLL.cs" />
     <Compile Include="PhongBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanBLL.cs" />
