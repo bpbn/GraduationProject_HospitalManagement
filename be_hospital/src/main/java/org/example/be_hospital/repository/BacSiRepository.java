@@ -15,7 +15,7 @@ public interface BacSiRepository extends JpaRepository<BacSi, String> {
     @Query("SELECT COUNT(b) FROM BacSi b WHERE b.hocHam IN :hocHams")
     long countByHocHamIn(@Param("hocHams") List<String> hocHams);
 
-    // Đếm số bác sĩ có mã học vị là Thạc sĩ
+    // Đếm số bác sĩ có mã học vị là Thạc sĩ / TS
     long countByHocViList_MaHocVi(String maHocVi);
 
     // Đếm tổng số bác sĩ
