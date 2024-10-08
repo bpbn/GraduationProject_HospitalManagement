@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33214.272
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winform_hospital", "winform_hospital\winform_hospital.csproj", "{DB23F481-FC51-499D-B9E1-8DF39300A0B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "winform_hospital\GUI.csproj", "{DB23F481-FC51-499D-B9E1-8DF39300A0B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A668C763-3781-47BC-8518-D965B34AB467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{C288372E-9506-4D4D-8A91-D246F96099A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DB23F481-FC51-499D-B9E1-8DF39300A0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB23F481-FC51-499D-B9E1-8DF39300A0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB23F481-FC51-499D-B9E1-8DF39300A0B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A668C763-3781-47BC-8518-D965B34AB467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A668C763-3781-47BC-8518-D965B34AB467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A668C763-3781-47BC-8518-D965B34AB467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A668C763-3781-47BC-8518-D965B34AB467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C288372E-9506-4D4D-8A91-D246F96099A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C288372E-9506-4D4D-8A91-D246F96099A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C288372E-9506-4D4D-8A91-D246F96099A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C288372E-9506-4D4D-8A91-D246F96099A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

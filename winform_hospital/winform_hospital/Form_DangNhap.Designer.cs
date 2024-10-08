@@ -1,7 +1,7 @@
 ﻿
 namespace winform_hospital
 {
-    partial class Form1
+    partial class Form_DangNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,18 @@ namespace winform_hospital
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Form_DangNhap
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "Form_DangNhap";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form_DangNhap_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
