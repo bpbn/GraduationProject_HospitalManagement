@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TrangchuComponent } from './trangchu/trangchu.component';
-import { BacsiComponent } from './bacsi/bacsi.component';
 import { CtbacsiComponent } from './ctbacsi/ctbacsi.component';
 import { DatlichComponent } from './datlich/datlich.component';
 import { LoginComponent } from './login/login.component';

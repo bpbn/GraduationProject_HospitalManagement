@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardDatlichComponent } from './card-datlich/card-datlich.component';
 import { DatlichComponent } from './datlich/datlich.component';
-import { BacsiComponent } from './bacsi/bacsi.component';
 import { CtbacsiComponent } from './ctbacsi/ctbacsi.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -26,7 +25,6 @@ import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BacsiComponent,
     LoginComponent,
     RegisterComponent,
     TrangchuComponent,
