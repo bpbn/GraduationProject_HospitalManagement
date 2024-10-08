@@ -1,5 +1,13 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { BacsiService } from '../services/bacsi.service';
+import { RouterLink } from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-bacsi',
@@ -34,9 +42,10 @@ export class BacsiComponent {
   ngOnInit() {
     this.getListHocVi();
     this.getListHocHam();
-    this.getListChuyenKhoa();
+    this.getListChucVu();
     this.getListBacSi();
-    this.getListDanhHieu();
+    debugger;
+    //this.getListDanhHieu();
   }
 
   getListHocVi(){
@@ -62,6 +71,21 @@ export class BacsiComponent {
         this.ListBacSi = res;
         this.originalListBacSi = [...this.ListBacSi]; 
     })
+  }
+
+  getListDanhHieu(){
+    this.bacsiService.getListDanhHieu().subscribe((res:any)=>{
+        this.ListDanhHieu = res;
+    })
+  }
+
+  getDanhHieuByMaNhanVien(maNhanVien: string) {
+    const bacsi = this.ListDanhHieu.find(bs => bs.maNhanVien === maNhanVien);
+    if (bacsi && bacsi.danhHieu) {
+      return bacsi.danhHieu;
+    } else {
+        return "";
+    };
   }
 
  //học vị chưa làm

@@ -74,4 +74,10 @@ public class BacSiController {
     public List<String> layHocViSapXep(@PathVariable String maBacSi) {
         return bacSiDAO.layHocViSapXepTheoBac(maBacSi);
     }
+
+    @GetMapping("/kiemTraHVCuaBS/{id}/{hocvi}")
+    public long kiemTraHVCuaBS(@PathVariable String id, @PathVariable String hocvi) {
+        return bacSiDAO.kiemTraTonTaiHocViCuaBacSi(id, hocvi);
+    }
+
 }

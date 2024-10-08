@@ -44,7 +44,7 @@ export class BacsiService {
     return this.http.get<string[]>(this.apiURL + "/dschuyenkhoa");
   }
 
-  getListDanhHieu(id: string){
+  getListDanhHieu(id?: string){
     return this.http.get(this.apiURL + "/hocvi/" + id);
   }
 
@@ -54,6 +54,10 @@ export class BacsiService {
 
   getHocViCuaBS(id: string){
     return this.http.get(this.apiURL + "/hocvi/" + id);
+  }
+
+  kiemTraHVTonTai(id: string, maHocVi: string){
+    return this.http.get<number>(this.apiURL + "/kiemTraHVCuaBS/" + id + "/" + maHocVi);
   }
 
 

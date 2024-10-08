@@ -113,6 +113,17 @@ public class BacSiDAO {
         return Collections.singletonList(ketQua.stream().collect(Collectors.joining("."))); // Trả về danh sách kết quả đã nối
     }
 
+    public Integer kiemTraTonTaiHocViCuaBacSi(String maBacSi, String hocVi) {
+
+        BacSi bacSi = bacSiRepository.findById(maBacSi).orElse(null);
+
+        if (bacSi == null) {
+            return 0;
+        }
+
+        return bacSi.getHocViList().stream()
+                .anyMatch(hv -> hv.getMaHocVi().equals(hocVi)) ? 1 : 0;
+    }
 
 
 }

@@ -31,19 +31,23 @@
         </div>
       </div>
 
-      <div class="text-center text-gray-500 mt-10">
-        <p>Chưa có thông tin bác sĩ, vui lòng đặt lại bộ lọc.</p>
+      <div *ngIf="ListBacSi.length === 0 && originalListBacSi.length > 0">
+        <p class="text-center text-gray-500 mt-10">Chưa có thông tin bác sĩ, vui lòng đặt lại bộ lọc.</p>
       </div>
 
-      <div class="py-8 flex flex-wrap md:flex-nowrap">
-        <div class="md:w-64 md:mb-0 mb-6 mr-5 flex-shrink-0 flex flex-col">
-          <img alt="content" class="object-cover object-center h-full w-full crop-image" src="assets/images/default.jpg">
-        </div>
-        <div class="md:flex-grow">
-          <h2 class="text-2xl font-medium text-gray-900 title-font mb-4">Danh hiệu Bác Sĩ</h2>
-          <p class="leading-relaxed text-gray-500">Chức vụ</p>
-          <p class="leading-relaxed mt-4">Giới thiệu ngắn về bác sĩ...</p>
-          <button class="inline-flex text-white backgroundcolor ml-4 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded mt-10">XEM CHI TIẾT</button>
+      <div *ngIf="ListBacSi.length > 0">
+        <div *ngFor="let item of ListBacSi; let i = index">
+          <div class="py-8 flex flex-wrap md:flex-nowrap">
+            <div class="md:w-64 md:mb-0 mb-6 mr-5 flex-shrink-0 flex flex-col">
+              <img alt="content" class="object-cover object-center h-full w-full crop-image" src="assets/images/bacsi{{item.hinhAnh}}" >
+            </div>
+            <div class="md:flex-grow">
+              <h2 class="text-2xl font-medium text-gray-900 title-font mb-4">{{ getDanhHieuByMaNhanVien(item.maNhanVien) }} {{ item.tenNhanVien.toUpperCase() }}</h2>
+              <p class="leading-relaxed text-gray-500">{{ item.chucVu }}</p>
+              <p class="leading-relaxed mt-4">{{ item.gioiThieu.substring(0, 200) }}...</p>
+              <button routerLink="/ctbacsi/{{ item.maNhanVien }}" class="inline-flex text-white backgroundcolor ml-4 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded mt-10">XEM CHI TIẾT</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
