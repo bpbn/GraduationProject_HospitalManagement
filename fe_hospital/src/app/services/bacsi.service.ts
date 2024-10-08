@@ -7,13 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BacsiService {
 
-  apiURL: string = "http://localhost:4848/bacsi"
-  apiURL2: string = "http://localhost:4848/phieuhen"
+  apiURL: string = "http://localhost:1314/bacsi"
+  apiURL2: string = "http://localhost:1314/phieudangky"
 
   constructor(private http: HttpClient){}
 
   getAllDoctor(){
-    return this.http.get(this.apiURL + "/danhsachbs");
+    return this.http.get(this.apiURL + "/all");
   }
 
   getTongBacSi(){
