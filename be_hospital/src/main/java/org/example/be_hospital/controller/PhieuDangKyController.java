@@ -17,7 +17,7 @@ public class PhieuDangKyController {
     private PhieuDangKyDAO phieuDangKyDAO;
 
     @PostMapping("/them")
-    public PhieuDangKyDTO addPhieuDangKy(@RequestBody PhieuDangKyDTO phieuDangKy) {
+    public PhieuDangKy addPhieuDangKy(@RequestBody PhieuDangKy phieuDangKy) {
         return phieuDangKyDAO.addPhieuDangKy(phieuDangKy);
     }
 

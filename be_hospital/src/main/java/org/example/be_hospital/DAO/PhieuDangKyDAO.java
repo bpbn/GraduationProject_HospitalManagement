@@ -1,6 +1,7 @@
 package org.example.be_hospital.DAO;
 
 import org.example.be_hospital.DTO.PhieuDangKyDTO;
+import org.example.be_hospital.POJO.PhieuDangKy;
 import org.example.be_hospital.repository.PhieuDangKyReponsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ public class PhieuDangKyDAO {
     @Autowired
     private PhieuDangKyReponsitory phieuDangKyRepository;
 
-    public List<PhieuDangKyDTO> getAllBenhNhan() {
+    public List<PhieuDangKy> getAllBenhNhan() {
         return phieuDangKyRepository.findAll();
     }
 
@@ -32,7 +33,7 @@ public class PhieuDangKyDAO {
         return prefix + String.format("%04d", newNumber);
     }
 
-    public PhieuDangKyDTO addPhieuDangKy(PhieuDangKyDTO phieuDangKy) {
+    public PhieuDangKy addPhieuDangKy(PhieuDangKy phieuDangKy) {
         // Sinh mã PDK mới
         String maPDK = generateMaPDK();
         phieuDangKy.setMaPhieuDangKy(maPDK);
