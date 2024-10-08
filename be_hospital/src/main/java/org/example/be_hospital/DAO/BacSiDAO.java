@@ -9,10 +9,7 @@ import org.example.be_hospital.repository.HocViRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,6 +44,7 @@ public class BacSiDAO {
         return bacSiRepository.findAll()
                 .stream()
                 .map(BacSi::getHocHam)
+                .filter(Objects::nonNull)
                 .distinct()
                 .toList();
     }
@@ -66,7 +64,6 @@ public class BacSiDAO {
     public long layTongSoBacSiCoHocHam() {
         return bacSiRepository.countByHocHamIn(Arrays.asList("Giáo sư", "Phó giáo sư"));
     }
-
 
     // Hàm tính tổng số bác sĩ có mã học vị là Tiến sĩ (TS)
     public long layTongSoBacSiCoHocViTS() {
