@@ -13,21 +13,21 @@ import java.util.List;
 @Table(name = "BACSI")
 public class BacSi {
     @Id
-    @Column(name = "MABACSI")
+//    @Column(name = "MABACSI")
     private String maBacSi;
-    @Column(name = "HOTEN")
+//    @Column(name = "HOTEN")
     private String hoTen;
-    @Column(name = "GIOITINH")
+//    @Column(name = "GIOITINH")
     private String gioiTinh;
-    @Column(name = "HOCHAM")
+//    @Column(name = "HOCHAM")
     private String hocHam;
-    @Column(name = "ANHDAIDIEN")
+//    @Column(name = "ANHDAIDIEN")
     private String anhDaiDien;
-    @Column(name = "GIOITHIEU")
+//    @Column(name = "GIOITHIEU")
     private String gioiThieu;
-    @Column(name = "TRANGTHAI")
+//    @Column(name = "TRANGTHAI")
     private String trangThai;
-    @Column(name = "NGAYCAPNHAT")
+//    @Column(name = "NGAYCAPNHAT")
     private Date ngayCapNhat;
 
     @ManyToOne()

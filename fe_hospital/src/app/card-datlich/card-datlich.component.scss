@@ -1,0 +1,28 @@
+.card {
+  border: 1px solid #148068 !important; /* Màu viền */
+  border-radius: 8px; /* Góc bo tròn */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+  background-color: #ccf1e7 !important; /* Màu nền khung */
+  max-width: 800px; /* Chiều rộng tối đa của khung */
+  margin: 0 auto; /* Căn giữa khung */
+
+}
+
+
+.card section {
+  padding: 10px;
+  background-color: #e4fbf4;
+}
+
+button {
+  background-color: #148068 !important;
+}
+
+button:hover {
+  background-color: #106a57;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

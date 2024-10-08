@@ -1,0 +1,30 @@
+.container {
+  padding: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 0.875rem;
+      color: #4A5568; /* Màu xám */
+    }
+
+    select {
+      border: 1px solid #ccc;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}

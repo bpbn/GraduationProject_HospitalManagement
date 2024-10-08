@@ -1,0 +1,91 @@
+<div class="card border rounded-lg shadow-lg p-6 bg-white">
+  <section>
+    <div class="flex flex-col text-center w-full mb-12" style="display: flex; flex-direction: column; align-items: center;">
+      <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Đặt Lịch Khám</h2>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Vui lòng điền đầy đủ thông tin để đặt lịch khám.</p>
+    </div>
+    <form>
+      <div class="flex justify-center mb-4">
+        <button type="button" class="bg-blue-500 text-white py-2 px-4 rounded-l">Theo bác sĩ</button>
+        <button type="button" class="bg-blue-500 text-white py-2 px-4 rounded-r">Theo ngày</button>
+      </div>
+      <div class="flex flex-wrap -m-2">
+        <!-- Thông tin bệnh nhân -->
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="tenBenhNhan" class="leading-7 text-sm text-gray-600">Tên Bệnh Nhân</label>
+            <input type="text" id="tenBenhNhan" name="tenBenhNhan" class="w-full border rounded py-1 px-3 text-lg">
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="gioiTinh" class="leading-7 text-sm text-gray-600">Giới Tính</label>
+            <select id="gioiTinh" name="gioiTinh" class="w-full border rounded py-1 px-3 text-lg">
+              <option value="Nam">Nam</option>
+              <option value="Nữ">Nữ</option>
+            </select>
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="ngaySinh" class="leading-7 text-sm text-gray-600">Ngày Sinh</label>
+            <input type="date" id="ngaySinh" name="ngaySinh" class="w-full border rounded py-1 px-3 text-lg">
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="sdt" class="leading-7 text-sm text-gray-600">Số Điện Thoại</label>
+            <input type="tel" id="sdt" name="sdt" class="w-full border rounded py-1 px-3 text-lg">
+          </div>
+        </div>
+        <div class="p-2 w-full">
+          <div class="relative">
+            <label for="diaChi" class="leading-7 text-sm text-gray-600">Địa Chỉ</label>
+            <input type="text" id="diaChi" name="diaChi" class="w-full border rounded py-1 px-3 text-lg">
+          </div>
+        </div>
+
+        <!-- Phần chọn bác sĩ hoặc ngày -->
+        <div class="w-full flex flex-wrap -m-2">
+          <div class="p-2 w-full">
+            <div class="relative">
+              <label for="bacSi" class="leading-7 text-sm text-gray-600">Chọn bác sĩ</label>
+              <select id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg">
+                <option value="1">Bác sĩ A</option>
+                <option value="2">Bác sĩ B</option>
+              </select>
+            </div>
+          </div>
+          <div class="p-2 w-1/2">
+            <div class="relative">
+              <label for="ngayKham" class="leading-7 text-sm text-gray-600">Chọn ngày muốn khám</label>
+              <input type="date" id="ngayKham" name="ngayKham" class="w-full border rounded py-1 px-3 text-lg">
+            </div>
+          </div>
+          <div class="p-2 w-1/2">
+            <div class="relative">
+              <label class="leading-7 text-sm text-gray-600">Chọn khung giờ muốn khám</label>
+              <div class="flex items-center">
+                <input type="radio" id="morning" name="khungGioKham" value="Sáng" class="mr-2">
+                <label for="morning" class="leading-7 text-sm text-gray-600 mr-4">Sáng</label>
+                <input type="radio" id="afternoon" name="khungGioKham" value="Chiều" class="mr-2">
+                <label for="afternoon" class="leading-7 text-sm text-gray-600">Chiều</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mô tả bệnh và nút submit -->
+        <div class="p-2 w-full">
+          <div class="relative">
+            <label for="vanDeSucKhoe" class="leading-7 text-sm text-gray-600">Mô Tả Bệnh</label>
+            <textarea id="vanDeSucKhoe" name="vanDeSucKhoe" class="w-full border rounded py-1 px-3 text-lg"></textarea>
+          </div>
+        </div>
+        <div class="p-2 w-full">
+          <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded">Đặt lịch</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

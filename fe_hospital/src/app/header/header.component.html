@@ -1,0 +1,22 @@
+<header class="text-white backgroundcolor body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img width="50" src="assets/images/Logo.png" >
+      <span class="ml-3 text-xl text-white">Bệnh viện bệnh nhiệt đới</span>
+    </a>
+    <nav class="md:ml-auto flex-wrap items-center text-base justify-center">
+      <a routerLink="/home" routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page"
+      class="mr-10 hover:text-gray-900">HOME</a>
+      <a routerLink="/list-doctors" routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page"
+      class="mr-10 hover:text-gray-900">CHUYÊN GIA - BÁC SĨ</a>
+      <a routerLink="/datlich" routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page"
+      class="mr-10 hover:text-gray-900">ĐẶT LỊCH</a>
+      <a routerLink="/login" routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page"
+      class="mr-10 hover:text-gray-900">ĐĂNG NHẬP</a>
+    </nav>
+  </div>
+</header>

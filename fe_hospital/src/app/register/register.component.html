@@ -1,0 +1,59 @@
+<div class="register-container">
+  <h3 class="text-center">Đăng ký</h3>
+  <hr>
+
+  <div class="mb-3">
+    <label for="maBenhNhan" class="form-label">Mã Bệnh Nhân</label>
+    <input type="text" class="form-control" id="maBenhNhan" placeholder="Nhập mã bệnh nhân">
+  </div>
+
+  <div class="mb-3">
+    <label for="hoTen" class="form-label">Họ và Tên</label>
+    <input type="text" class="form-control" id="hoTen" placeholder="Nhập họ tên">
+  </div>
+
+  <div class="mb-3">
+    <label for="gioiTinh" class="form-label">Giới Tính</label>
+    <select class="form-control" id="gioiTinh">
+      <option value="Nam">Nam</option>
+      <option value="Nữ">Nữ</option>
+      <option value="Khác">Khác</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="diaChi" class="form-label">Địa chỉ</label>
+    <input type="text" class="form-control" id="diaChi" placeholder="Nhập địa chỉ">
+  </div>
+
+  <div class="mb-3">
+    <label for="namSinh" class="form-label">Năm sinh</label>
+    <input type="number" class="form-control" id="namSinh" placeholder="Nhập năm sinh">
+  </div>
+
+  <div class="mb-3">
+    <label for="dienThoai" class="form-label">Số điện thoại</label>
+    <input type="text" class="form-control" id="dienThoai" placeholder="Nhập số điện thoại">
+  </div>
+
+  <hr>
+
+  <div class="mb-3">
+    <label for="taiKhoan" class="form-label">Tên đăng nhập</label>
+    <input type="text" class="form-control" id="taiKhoan" placeholder="Nhập tên đăng nhập">
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Mật khẩu</label>
+    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+  </div>
+  
+  <button type="button" class="btn btn-primary">
+    <i class="fas fa-user-plus"></i>&nbsp;Đăng ký
+  </button>
+  
+  <div class="text-center mt-3">
+    Bạn đã có tài khoản?&nbsp;
+    <a routerLink="/login" class="btn btn-link">Đăng nhập</a>
+  </div>
+</div>
