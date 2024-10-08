@@ -1,0 +1,32 @@
+
+.register-container {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 200%;
+}
+.register-container h3 {
+  margin-bottom: 20px;
+}
+.btn-primary {
+  background-color: #148068;
+  border-color: #148068;
+  width: 100%;
+  padding: 10px;
+}
+.btn-primary:hover {
+  background-color: #106856;
+  border-color: #106856;
+}
+.btn-link {
+  padding-left: 0;
+  text-decoration: none;
+  color: #007bff;
+}
+.btn-link:hover {
+  text-decoration: underline;
+}
+.register-container hr {
+  margin: 20px 0;
+}

@@ -1,6 +1,7 @@
 package org.example.be_hospital.controller;
 
 import org.example.be_hospital.DAO.PhieuDangKyDAO;
+import org.example.be_hospital.DTO.PhieuDangKyDTO;
 import org.example.be_hospital.POJO.PhieuDangKy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class PhieuDangKyController {
     private PhieuDangKyDAO phieuDangKyDAO;
 
     @PostMapping("/them")
-    public PhieuDangKy addPhieuDangKy(@RequestBody PhieuDangKy phieuDangKy) {
+    public PhieuDangKyDTO addPhieuDangKy(@RequestBody PhieuDangKyDTO phieuDangKy) {
         return phieuDangKyDAO.addPhieuDangKy(phieuDangKy);
     }
 
