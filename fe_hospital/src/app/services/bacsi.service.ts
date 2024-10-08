@@ -17,35 +17,35 @@ export class BacsiService {
   }
 
   getTongBacSi(){
-    return this.http.get<number>(this.apiURL + "/tongBS");
+    return this.http.get<number>(this.apiURL + "/tong-bs");
   }
 
   getTongTienSi(){
-    return this.http.get<number>(this.apiURL + "/tongTS");
+    return this.http.get<number>(this.apiURL + "/tong-ts");
   }
 
   getTongThacSi(){
-    return this.http.get<number>(this.apiURL + "/tongThS");
+    return this.http.get<number>(this.apiURL + "/tong-ths");
   }
 
   getTongGSvaPGS(){
-    return this.http.get<number>(this.apiURL + "/tongGSvaPGS");
+    return this.http.get<number>(this.apiURL + "/tong-gs-pgs");
   }
 
   getListHocVi(){
-    return this.http.get(this.apiURL + "/danhsachhv");
+    return this.http.get(this.apiURL + "/dshocvi");
   }
 
   getListHocHam(){
-    return this.http.get<string[]>(this.apiURL + "/danhsachhh");
+    return this.http.get<string[]>(this.apiURL + "/dshocham");
   }
 
-  getListChucVu(){
-    return this.http.get<string[]>(this.apiURL + "/danhsachcv");
+  getListChuyenKhoa(){
+    return this.http.get<string[]>(this.apiURL + "/dschuyenkhoa");
   }
 
-  getListDanhHieu(){
-    return this.http.get(this.apiURL + "/danhsachdh");
+  getListDanhHieu(id: string){
+    return this.http.get(this.apiURL + "/hocvi/" + id);
   }
 
   getBacSiByID(id: string){
@@ -56,10 +56,8 @@ export class BacsiService {
     return this.http.get(this.apiURL + "/hocvi/" + id);
   }
 
-  kiemTraHVTonTai(id: string, maHocVi: string){
-    return this.http.get<number>(this.apiURL + "/kiemTraHVCuaBS/" + id + "/" + maHocVi);
-  }
 
+//chưa sửa
   getAvailableDatesForDoctor(maBacSi: string){
     return this.http.get(this.apiURL2 + "/ngaylamvieccuabs/" + maBacSi);
   }
@@ -79,5 +77,6 @@ export class BacsiService {
   getNgayTrongThang(i: number){
     return this.http.get(this.apiURL + "/tachNgayTheoTuan/" + i);
   }
+
 }
   

@@ -22,25 +22,25 @@ public class BacSiController {
     }
 
     // Lấy thông tin bác sĩ theo mã
-    @GetMapping("/{maBacSi}")
+    @GetMapping("/timbstheoma/{maBacSi}")
     public BacSi getBacSiById(@PathVariable String maBacSi) {
         return bacSiDAO.getBacSiById(maBacSi);
     }
 
     // Lấy danh sách học vị
-    @GetMapping("/hocvi")
+    @GetMapping("/dshocvi")
     public List<HocVi> getAllHocVi() {
         return bacSiDAO.getAllHocVi();
     }
 
     // Lấy danh sách học hàm
-    @GetMapping("/hocham")
+    @GetMapping("/dshocham")
     public List<String> getAllHocHam() {
         return bacSiDAO.getAllHocHam();
     }
 
     // Lấy danh sách chuyên khoa
-    @GetMapping("/chuyenkhoa")
+    @GetMapping("/dschuyenkhoa")
     public List<ChuyenKhoa> getAllChuyenKhoa() {
         return bacSiDAO.getAllChuyenKhoa();
     }
@@ -70,7 +70,7 @@ public class BacSiController {
     }
 
     // Lấy danh sách học vị đã sắp xếp theo bậc của bác sĩ
-    @GetMapping("/{maBacSi}/hocvi")
+    @GetMapping("/hocvi/{maBacSi}")
     public List<String> layHocViSapXep(@PathVariable String maBacSi) {
         return bacSiDAO.layHocViSapXepTheoBac(maBacSi);
     }
