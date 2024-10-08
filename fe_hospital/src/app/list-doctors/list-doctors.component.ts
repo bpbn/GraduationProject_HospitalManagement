@@ -14,21 +14,21 @@ export class ListDoctorsComponent {
 
   ListHocVi: any[] = [];
   ListHocHam: string[] = [];
-  ListChucVu: string[] = [];
+  ListChuyenKhoa: any[] = [];
   ListBacSi: any[] = [];
   ListDanhHieu: any[] = [];
   bacSi: any = {};
   ListHocViCuaBS: string[] = [];
   originalListBacSi: any[] = [];
-  chucVuSelected: string = "";
+  chuyenKhoaSelected: string = "";
   hocHamSelected: string = "";
   hocViSelected: string = "";
 
   ngOnInit() {
     this.getListHocVi();
+    this.getListChuyenKhoa();
     this.getListHocHam();
     this.getListBacSi();
-    this.getListDanhHieu();
   }
 
   getListHocVi(){
@@ -36,6 +36,13 @@ export class ListDoctorsComponent {
       this.ListHocVi = res;
     })
   }
+
+  getListChuyenKhoa(){
+    this.bacsiService.getListChuyenKhoa().subscribe((res:any)=>{
+      this.ListChuyenKhoa = res;
+    })
+  }
+
 
   getListHocHam(){
     this.bacsiService.getListHocHam().subscribe((res:any)=>{
@@ -47,25 +54,17 @@ export class ListDoctorsComponent {
     this.bacsiService.getAllDoctor().subscribe((res:any)=>{
         this.ListBacSi = res;
         this.originalListBacSi = [...this.ListBacSi]; 
+        debugger;
     })
   }
 
-  getListDanhHieu(){
-    this.bacsiService.getListDanhHieu().subscribe((res:any)=>{
-        this.ListDanhHieu = res;
-    })
+  getDanhHieu(id: string) {
+    this.bacsiService.getHocViCuaBS(id).subscribe((res: any) => {
+    return res;
+    });
   }
 
-  getDanhHieuByMaNhanVien(maNhanVien: string) {
-    const bacsi = this.ListDanhHieu.find(bs => bs.maNhanVien === maNhanVien);
-    if (bacsi && bacsi.danhHieu) {
-      return bacsi.danhHieu;
-    } else {
-        return "";
-    };
-  }
-
-  onChucVuChange(event: any) {
+  onChuyenKhoaChange(event: any) {
     this.resetList()
     this.filterBacSi();
   }
@@ -86,14 +85,14 @@ export class ListDoctorsComponent {
 
 
   filterBacSi() {
-    const selectedChucVu = this.chucVuSelected;
+    const selectedChuyenKhoa = this.chuyenKhoaSelected;
     const selectedHocHam = this.hocHamSelected;
     const selectedHocVi = this.hocViSelected;
     
     if(this.hocViSelected == "")
     {
       const filteredBacSi = this.ListBacSi.filter((bs) => {
-        return (!selectedChucVu || bs.chucVu === selectedChucVu) &&
+        return (!selectedChuyenKhoa || bs.chucVu === selectedChuyenKhoa) &&
                 (!selectedHocHam || bs.hocHam === selectedHocHam);
       });   
       this.ListBacSi = filteredBacSi;
@@ -106,7 +105,7 @@ export class ListDoctorsComponent {
     
       Promise.all(promises).then(results => {
         const filteredBacSi = this.ListBacSi.filter((bs, index) => {
-          return (!selectedChucVu || bs.chucVu === selectedChucVu) &&
+          return (!selectedChuyenKhoa || bs.chucVu === selectedChuyenKhoa) &&
                 (!selectedHocHam || bs.hocHam === selectedHocHam) &&
                 (!selectedHocVi || results[index] === 1);
         });

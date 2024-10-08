@@ -40,8 +40,8 @@ export class CtbacsiComponent {
       this.id = param['id'];
     });
     this.getTTBS();
-    this.getListDanhHieu();
-    this.getDanhHieuByMaNhanVien();
+    this.getDanhHieu();
+    debugger;
   }
 
   getTTBS() {
@@ -51,18 +51,10 @@ export class CtbacsiComponent {
     });
   }
 
-  getListDanhHieu() {
-    this.bacsiService.getListDanhHieu().subscribe((res: any) => {
-      this.ListDanhHieu = res;
+  getDanhHieu() {
+    this.bacsiService.getHocViCuaBS(this.id).subscribe((res: any) => {
+      this.DanhHieu = res;
     });
   }
 
-  getDanhHieuByMaNhanVien() {
-    const bacsi = this.ListDanhHieu.find(bs => bs.maNhanVien === this.id);
-    if (bacsi && bacsi.danhHieu) {
-      this.DanhHieu = bacsi.danhHieu;
-    } else {
-      this.DanhHieu = '';
-    }
-  }
 }

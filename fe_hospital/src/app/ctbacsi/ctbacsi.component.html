@@ -2,48 +2,27 @@
   <div class="lg:w-5/6 mx-auto">
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
 
-      <!-- Ảnh bác sĩ -->
       <div class="lg:max-w-lg lg:w-2/6 md:w-1/2 w-5/6">
-        <img class="object-cover object-center rounded" src="assets/images/doctor_image.png" alt="Doctor Image">
+        <img class="object-cover object-center rounded" src="assets/images/bacsi/{{ttbacsi.anhDaiDien}}">
       </div>
 
-      <!-- Thông tin bác sĩ -->
-      <div class="lg:flex-grow md:w-2/6 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 textcolor">TS. Bùi Phan Bảo Ngọc</h1>
-        <p class="leading-relaxed text-base mb-10">Phó Giáo sư, Tiến sĩ</p>
-        <div class="leading-relaxed text-base mb-4">
-           <!-- Placeholder cho lịch làm việc -->
-           Lịch làm việc: Thứ 2 đến Thứ 6, 9:00 AM - 5:00 PM
-        </div>
-      </div>
-
-      <!-- Form đặt lịch -->
-      <div class="lg:w-3/6 md:w-1/2 p-8">
-        <!-- Placeholder cho card đặt lịch -->
-        <div class="card p-4 bg-light">
-          <h3 class="text-center">Đặt lịch khám</h3>
-          <form>
-            <div class="mb-3">
-              <label for="date" class="form-label">Chọn ngày</label>
-              <input type="date" class="form-control" id="date">
-            </div>
-            <div class="mb-3">
-              <label for="time" class="form-label">Chọn giờ</label>
-              <input type="time" class="form-control" id="time">
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Đặt lịch</button>
-          </form>
+      <div class="lg:flex-grow md:w-4/6 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 textcolor">{{DanhHieu}} {{ttbacsi.hoTen}}</h1>
+        <p class="leading-relaxed text-base mb-10">{{ttbacsi.chuyenKhoa.tenChuyenKhoa}}</p>
+        <div class="leading-relaxed text-base">
+           <app-lichlamviec></app-lichlamviec>
         </div>
       </div>
       
     </div>
+
+    <div>
+      <app-card-datlich></app-card-datlich>
+    </div>
     
-    <!-- Giới thiệu bác sĩ -->
     <div class="mb-20">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 textcolor">Giới thiệu</h1>
-      <p class="mb-8 leading-relaxed" style="font-size: 18px;">
-        Bác sĩ Bùi Phan Bảo Ngọc có hơn 20 năm kinh nghiệm trong ngành y tế, chuyên khoa Nội tổng quát và Tim mạch. Bác sĩ đã thực hiện nhiều ca phẫu thuật thành công và được đồng nghiệp kính trọng vì sự tận tâm với nghề.
-      </p>
+        <p class="mb-8 leading-relaxed"style="font-size: 18px;">{{ttbacsi.gioiThieu}}</p>
     </div>
 
   </div>

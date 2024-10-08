@@ -78,7 +78,7 @@ public class BacSiDAO {
         return bacSiRepository.countByHocViList_MaHocVi("THS");
     }
 
-    public List<String> layHocViSapXepTheoBac(String maBacSi) {
+    public String layHocViSapXepTheoBac(String maBacSi) {
         // Lấy bác sĩ theo mã
         BacSi bacSi = bacSiRepository.findById(maBacSi).orElse(null);
 
@@ -110,7 +110,9 @@ public class BacSiDAO {
         }
 
         // Kết hợp các danh hiệu với dấu "."
-        return Collections.singletonList(ketQua.stream().collect(Collectors.joining("."))); // Trả về danh sách kết quả đã nối
+        String ketQuaChuoi = String.join(".", ketQua);
+
+        return ketQuaChuoi;
     }
 
     public Integer kiemTraTonTaiHocViCuaBacSi(String maBacSi, String hocVi) {
@@ -124,6 +126,4 @@ public class BacSiDAO {
         return bacSi.getHocViList().stream()
                 .anyMatch(hv -> hv.getMaHocVi().equals(hocVi)) ? 1 : 0;
     }
-
-
 }
