@@ -16,6 +16,7 @@ export class TrangchuComponent {
   tongThacSi: number = 0;
   tongPGS_TS: number = 0;
 
+
   ngOnInit(){
     this.getTongBacSi();
     this.getTongPGS_GS();

@@ -1,19 +1,15 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { BacsiService } from '../services/bacsi.service';
+import { BacsiService } from './../services/bacsi.service';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-bacsi',
-  templateUrl: './bacsi.component.html',
-  styleUrls: ['./bacsi.component.scss']
+  selector: 'app-list-doctors',
+  templateUrl: './list-doctors.component.html',
+  styleUrls: ['./list-doctors.component.scss']
 })
-
-export class BacsiComponent {
-  currentPage: number = 1;
-  pageSize: number = 10;
-  displayedDoctors: any[] = [];
+export class ListDoctorsComponent {
 
   constructor(
-    private bacsiService : BacsiService,
+    private bacsiService: BacsiService,
   ){}
 
   ListHocVi: any[] = [];
@@ -24,19 +20,15 @@ export class BacsiComponent {
   bacSi: any = {};
   ListHocViCuaBS: string[] = [];
   originalListBacSi: any[] = [];
-  chuyenKhoaSelected: string = "";
+  chucVuSelected: string = "";
   hocHamSelected: string = "";
   hocViSelected: string = "";
-
-  
 
   ngOnInit() {
     this.getListHocVi();
     this.getListHocHam();
-    this.getListChucVu();
     this.getListBacSi();
     this.getListDanhHieu();
-    debugger;
   }
 
   getListHocVi(){
@@ -48,12 +40,6 @@ export class BacsiComponent {
   getListHocHam(){
     this.bacsiService.getListHocHam().subscribe((res:any)=>{
       this.ListHocHam = res;
-    })
-  }
-
-  getListChucVu(){
-    this.bacsiService.getListChuyenKhoa().subscribe((res:any)=>{
-      this.ListChucVu = res;
     })
   }
 
@@ -79,9 +65,7 @@ export class BacsiComponent {
     };
   }
 
- //học vị chưa làm
-  
-  onChuyenKhoaChange(event: any) {
+  onChucVuChange(event: any) {
     this.resetList()
     this.filterBacSi();
   }
@@ -102,7 +86,7 @@ export class BacsiComponent {
 
 
   filterBacSi() {
-    const selectedChucVu = this.chuyenKhoaSelected;
+    const selectedChucVu = this.chucVuSelected;
     const selectedHocHam = this.hocHamSelected;
     const selectedHocVi = this.hocViSelected;
     
@@ -113,7 +97,6 @@ export class BacsiComponent {
                 (!selectedHocHam || bs.hocHam === selectedHocHam);
       });   
       this.ListBacSi = filteredBacSi;
-      this.updateDisplayedDoctors();
     }
     else
     {
@@ -128,21 +111,8 @@ export class BacsiComponent {
                 (!selectedHocVi || results[index] === 1);
         });
         this.ListBacSi = filteredBacSi;
-        this.updateDisplayedDoctors();
       });
     }
-  }
-
-  updateDisplayedDoctors() {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.displayedDoctors = this.ListBacSi.slice(startIndex, endIndex);
-  }
-  
-
-  onPageChange(event: any) {
-    this.currentPage = event.pageIndex + 1; 
-    this.updateDisplayedDoctors();
   }
 
 }
