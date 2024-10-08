@@ -39,6 +39,20 @@
           </div>
         </div>
 
+        <!-- Thông tin thêm -->
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="STTTiepNhan" class="leading-7 text-sm text-gray-600">STT Tiếp Nhận</label>
+            <input [(ngModel)]="pdk.STTTiepNhan" type="text" id="STTTiepNhan" name="STTTiepNhan" class="w-full border rounded py-1 px-3 text-lg">
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+            <label for="hinhThucDangKy" class="leading-7 text-sm text-gray-600">Hình Thức Đăng Ký</label>
+            <input [(ngModel)]="pdk.hinhThucDangKy" type="text" id="hinhThucDangKy" name="hinhThucDangKy" class="w-full border rounded py-1 px-3 text-lg">
+          </div>
+        </div>
+
         <!-- Phần chọn bác sĩ hoặc ngày -->
         <div *ngIf="showDoctor" class="w-full flex flex-wrap -m-2">
           <div class="p-2 w-full">
