@@ -92,7 +92,7 @@ export class ListDoctorsComponent {
     if(this.hocViSelected == "")
     {
       const filteredBacSi = this.ListBacSi.filter((bs) => {
-        return (!selectedChuyenKhoa || bs.chucVu === selectedChuyenKhoa) &&
+        return (!selectedChuyenKhoa || bs.chuyenKhoa.maChuyenKhoa === selectedChuyenKhoa) &&
                 (!selectedHocHam || bs.hocHam === selectedHocHam);
       });   
       this.ListBacSi = filteredBacSi;
@@ -100,12 +100,12 @@ export class ListDoctorsComponent {
     else
     {
       const promises = this.ListBacSi.map(bs => {
-        return this.bacsiService.kiemTraHVTonTai(bs.maNhanVien, selectedHocVi).toPromise();
+        return this.bacsiService.kiemTraHVTonTai(bs.maBacSi, selectedHocVi).toPromise();
       });
     
       Promise.all(promises).then(results => {
         const filteredBacSi = this.ListBacSi.filter((bs, index) => {
-          return (!selectedChuyenKhoa || bs.chucVu === selectedChuyenKhoa) &&
+          return (!selectedChuyenKhoa || bs.chuyenKhoa.maChuyenKhoa === selectedChuyenKhoa) &&
                 (!selectedHocHam || bs.hocHam === selectedHocHam) &&
                 (!selectedHocVi || results[index] === 1);
         });
