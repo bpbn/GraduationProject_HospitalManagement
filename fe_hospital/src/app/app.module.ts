@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     LoginComponent,
     RegisterComponent,
     TrangchuComponent,
-    DatlichComponent
+    DatlichComponent,
+    ListDoctorsComponent
   ],
   imports: [
     BrowserModule,

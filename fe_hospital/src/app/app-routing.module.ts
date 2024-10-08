@@ -6,11 +6,12 @@ import { CtbacsiComponent } from './ctbacsi/ctbacsi.component';
 import { DatlichComponent } from './datlich/datlich.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
   { path: 'home', title: 'Trang chủ', component: TrangchuComponent }, 
-  { path: 'bacsi', title: 'Bác sĩ', component: BacsiComponent }, 
+  { path: 'list-doctors', title: 'Bác sĩ', component: ListDoctorsComponent }, 
   { 
     path: 'ctbacsi/:id', 
     title: 'Thông tin bác sĩ', 
