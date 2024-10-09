@@ -65,6 +65,20 @@ namespace DAL
             }
         }
 
+        // Lấy tên phòng khám từ mã phòng
+        public string LayTenPhong(string maPhong)
+        {
+            string query = "SELECT TENPHONG FROM PHONG WHERE MAPHONG = :maPhong";
+            OracleParameter[] parameters = {
+                new OracleParameter("maPhong", maPhong)
+            };
 
+            DataTable dt = db.ExecuteQuery(query, parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["TENPHONG"].ToString();
+            }
+            return string.Empty;
+        }
     }
 }
