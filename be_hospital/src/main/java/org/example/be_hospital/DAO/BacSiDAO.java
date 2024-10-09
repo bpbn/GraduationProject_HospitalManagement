@@ -75,41 +75,72 @@ public class BacSiDAO {
         return bacSiRepository.countByHocViList_MaHocVi("THS");
     }
 
-    public String layHocViSapXepTheoBac(String maBacSi) {
+    public List<String> layHocViSapXepTheoBac(String maBacSi) {
+
         // Lấy bác sĩ theo mã
+
         BacSi bacSi = bacSiRepository.findById(maBacSi).orElse(null);
 
+
+
         // Khởi tạo danh sách kết quả
+
         List<String> ketQua = new ArrayList<>();
 
+
+
         if (bacSi != null) {
+
             // Kiểm tra học hàm và thêm vào danh sách kết quả nếu có
+
             if (bacSi.getHocHam() != null && !bacSi.getHocHam().isEmpty()) {
+
                 String hocHam = bacSi.getHocHam();
+
                 // Chuyển đổi học hàm thành GS hoặc PGS nếu cần
+
                 if (hocHam.equals("Giáo sư")) {
+
                     ketQua.add("GS");
+
                 } else if (hocHam.equals("Phó giáo sư")) {
+
                     ketQua.add("PGS");
+
                 } else {
+
                     ketQua.add(hocHam); // Nếu không phải GS hay PGS, thêm nguyên bản
+
                 }
+
             }
 
+
+
             // Lấy danh sách học vị và sắp xếp theo bậc học vị
+
             List<String> hocViSapXep = bacSi.getHocViList().stream()
+
                     .sorted((hv1, hv2) -> hv1.getBacHocVi().compareTo(hv2.getBacHocVi())) // Sắp xếp theo bậc
+
                     .map(hv -> hv.getMaHocVi()) // Chuyển đổi thành mã học vị
+
                     .collect(Collectors.toList()); // Trả về danh sách đã sắp xếp
 
+
+
             // Thêm danh sách học vị vào danh sách kết quả
+
             ketQua.addAll(hocViSapXep);
+
         }
 
-        // Kết hợp các danh hiệu với dấu "."
-        String ketQuaChuoi = String.join(".", ketQua);
 
-        return ketQuaChuoi;
+
+        // Kết hợp các danh hiệu với dấu "."
+
+        return Collections.singletonList(ketQua.stream().collect(Collectors.joining("."))); // Trả về danh sách kết quả đã nối
+
     }
 
     public Integer kiemTraTonTaiHocViCuaBacSi(String maBacSi, String hocVi) {
