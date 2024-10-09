@@ -6,6 +6,7 @@ import org.example.be_hospital.repository.PhieuDangKyReponsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,6 +38,14 @@ public class PhieuDangKyDAO {
         // Sinh mã PDK mới
         String maPDK = generateMaPDK();
         phieuDangKy.setMaPhieuDangKy(maPDK);
+        // Thiết lập ngày lập hiện tại
+        phieuDangKy.setNgayLap(new Date());
+
+        // Thiết lập hinh thức đăng ký mặc định
+        phieuDangKy.setHinhThucDangKy("Trực tiếp");
+
+        // Thiết lập trạng thái thanh toán mặc định
+        phieuDangKy.setTrangThaiThanhToan("Chưa thanh toán");
         // Lưu vào cơ sở dữ liệu
         return phieuDangKyRepository.save(phieuDangKy);
     }

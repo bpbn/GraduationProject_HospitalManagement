@@ -20,13 +20,12 @@ public class PhieuDangKy {
     private String maBenhNhan;
     private String NVLap;
 
-    @ManyToOne
-    private LichLamViec lichLamViec;
+    private String lichLamViec;
 
     private String NVThanhToan;
     private String tinhTrangSucKhoe;
-    private String STTTiepNhan;
-    private String STTKham;
+    private Integer STTTiepNhan;
+    private Integer STTKham;
     private String hinhThucDangKy;
 
 
