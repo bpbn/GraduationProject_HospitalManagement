@@ -62,11 +62,11 @@ namespace winform_hospital.DAL
                         OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                         adapter.Fill(dataTable);
 
-                        // Kiểm tra số bản ghi lấy được
-                        if (dataTable.Rows.Count == 0)
-                        {
-                            MessageBox.Show("Không có dữ liệu nào được trả về.");
-                        }
+                        //// Kiểm tra số bản ghi lấy được
+                        //if (dataTable.Rows.Count == 0)
+                        //{
+                        //    MessageBox.Show("Không có dữ liệu nào được trả về.");
+                        //}
                     }
                 }
             }

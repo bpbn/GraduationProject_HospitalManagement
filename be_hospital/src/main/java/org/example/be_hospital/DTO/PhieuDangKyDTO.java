@@ -15,8 +15,8 @@ public class PhieuDangKyDTO {
     private String maBHYT;
     private String trangThaiThanhToan;
     private String maBenhNhan;
-    private LichLamViec lichLamViec;
+    private String lichLamViec;
     private String tinhTrangSucKhoe;
-    private String STTTiepNhan;
+    private Integer STTTiepNhan;
     private String hinhThucDangKy;
 }

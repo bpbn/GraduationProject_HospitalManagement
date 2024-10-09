@@ -88,11 +88,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_BacSi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_BacSi.Designer.cs">
+      <DependentUpon>Form_BacSi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_DangNhap.Designer.cs">
       <DependentUpon>Form_DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ThuNgan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ThuNgan.Designer.cs">
+      <DependentUpon>Form_ThuNgan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_TiepNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_TiepNhan.Designer.cs">
+      <DependentUpon>Form_TiepNhan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_QuanLy.resx">
       <DependentUpon>Form_QuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_TiepNhan.resx">
+      <DependentUpon>Form_TiepNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
