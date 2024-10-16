@@ -82,6 +82,11 @@ namespace BLL
             return new string(Enumerable.Repeat(chars, 10) // Lặp lại để lấy 10 ký tự
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
+        public string LayMaLichLamViecTheoPhongVaNgay(string maPhong, DateTime ngayLam)
+        {
+            return llv.LayMaLichLamViecTheoPhongVaNgay(maPhong, ngayLam);
+        }
     }
 
 }

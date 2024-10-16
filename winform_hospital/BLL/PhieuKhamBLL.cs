@@ -12,10 +12,6 @@ namespace BLL
         private PhieuKhamDAL dal = new PhieuKhamDAL();
 
         // Tính toán số thứ tự khám dựa trên số phiếu khám trong ngày
-        public int LaySTTKhamTheoNgay(DateTime ngayHienTai)
-        {
-            int soPhieuKham = dal.DemSoPhieuKhamTheoNgay(ngayHienTai);
-            return soPhieuKham + 1; // Tăng 1 để lấy số thứ tự khám tiếp theo
-        }
+        
     }
 }

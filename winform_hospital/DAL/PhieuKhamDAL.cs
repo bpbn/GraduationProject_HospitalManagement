@@ -14,24 +14,6 @@ namespace DAL
         private DBConnect db = new DBConnect();
 
         // Đếm số phiếu khám theo ngày hiện tại
-        public int DemSoPhieuKhamTheoNgay(DateTime ngayHienTai)
-        {
-            string query = @"
-            SELECT COUNT(*) 
-            FROM PHIEUKHAM pk
-            WHERE TRUNC(pk.NGAYLAP) = :ngayHienTai";
-
-            OracleParameter[] parameters = new OracleParameter[]
-            {
-            new OracleParameter(":ngayHienTai", ngayHienTai.Date)
-            };
-
-            DataTable dt = db.ExecuteQuery(query, parameters);
-            if (dt.Rows.Count > 0)
-            {
-                return Convert.ToInt32(dt.Rows[0][0]);
-            }
-            return 0;
-        }
+        
     }
 }

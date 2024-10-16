@@ -37,6 +37,7 @@
             this.cbBHYT = new System.Windows.Forms.CheckBox();
             this.cboTenPhongKham = new System.Windows.Forms.ComboBox();
             this.rtxtLyDoKham = new System.Windows.Forms.RichTextBox();
+            this.txtMaPhong = new System.Windows.Forms.TextBox();
             this.txtSTTKham = new System.Windows.Forms.TextBox();
             this.txtSTTTiepNhan = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.btnLapPhieu = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
             this.btnThemBN = new System.Windows.Forms.Button();
-            this.txtMaPhong = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBenhNhanDK)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -161,9 +161,17 @@
             // 
             this.rtxtLyDoKham.Location = new System.Drawing.Point(206, 308);
             this.rtxtLyDoKham.Name = "rtxtLyDoKham";
-            this.rtxtLyDoKham.Size = new System.Drawing.Size(535, 138);
+            this.rtxtLyDoKham.Size = new System.Drawing.Size(536, 138);
             this.rtxtLyDoKham.TabIndex = 3;
             this.rtxtLyDoKham.Text = "";
+            // 
+            // txtMaPhong
+            // 
+            this.txtMaPhong.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaPhong.Location = new System.Drawing.Point(659, 269);
+            this.txtMaPhong.Name = "txtMaPhong";
+            this.txtMaPhong.Size = new System.Drawing.Size(83, 33);
+            this.txtMaPhong.TabIndex = 2;
             // 
             // txtSTTKham
             // 
@@ -245,7 +253,7 @@
             this.txtTenBenhNhan.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenBenhNhan.Location = new System.Drawing.Point(206, 89);
             this.txtTenBenhNhan.Name = "txtTenBenhNhan";
-            this.txtTenBenhNhan.Size = new System.Drawing.Size(535, 33);
+            this.txtTenBenhNhan.Size = new System.Drawing.Size(536, 33);
             this.txtTenBenhNhan.TabIndex = 2;
             // 
             // label4
@@ -312,6 +320,7 @@
             this.btnLapPhieu.TabIndex = 5;
             this.btnLapPhieu.Text = "Lập phiếu";
             this.btnLapPhieu.UseVisualStyleBackColor = true;
+            this.btnLapPhieu.Click += new System.EventHandler(this.btnLapPhieu_Click);
             // 
             // lbDate
             // 
@@ -333,14 +342,6 @@
             this.btnThemBN.Text = "Thêm";
             this.btnThemBN.UseVisualStyleBackColor = true;
             this.btnThemBN.Visible = false;
-            // 
-            // txtMaPhong
-            // 
-            this.txtMaPhong.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaPhong.Location = new System.Drawing.Point(659, 269);
-            this.txtMaPhong.Name = "txtMaPhong";
-            this.txtMaPhong.Size = new System.Drawing.Size(82, 33);
-            this.txtMaPhong.TabIndex = 2;
             // 
             // Form_TiepNhan
             // 

@@ -57,7 +57,8 @@ namespace DAL
                        pd.STTTIEPNHAN, 
                        pd.STTKHAM, 
                        pd.MABHYT, 
-                       llv.MAPHONG 
+                       llv.MAPHONG,
+                       pd.MABENHNHAN
                 FROM PHIEUDANGKY pd
                 JOIN BENHNHAN bn ON pd.MABENHNHAN = bn.MABENHNHAN
                 JOIN LICHLAMVIEC llv ON pd.LICHLAMVIEC = llv.MALICH
@@ -106,6 +107,57 @@ namespace DAL
             return 0;
         }
 
+        public bool LuuPhieuDangKy(string maPhieu, DateTime ngayLap, string maBHYT,
+                           string trangThaiThanhToan, string maBenhNhan, string nvLap,
+                           string nvThanhToan, string maLichLamViec, string tinhTrangSucKhoe,
+                           int sttTiepNhan, int sttKham, string hinhThucDangKy)
+        {
+            string query = @"INSERT INTO PHIEUDANGKY 
+                        (MAPHIEUDANGKY, NGAYLAP, MABHYT, TRANGTHAITHANHTOAN, MABENHNHAN, NVLAP, NVTHANHTOAN, 
+                         LICHLAMVIEC, TINHTRANGSUCKHOE, STTTIEPNHAN, STTKHAM, HINHTHUCDANGKY) 
+                        VALUES 
+                        (:maPhieu, :ngayLap, :maBHYT, :trangThaiThanhToan, :maBenhNhan, :nvLap, :nvThanhToan, 
+                         :maLichLamViec, :tinhTrangSucKhoe, :sttTiepNhan, :sttKham, :hinhThucDangKy)";
+
+            OracleParameter[] parameters = new OracleParameter[]
+            {
+                new OracleParameter(":maPhieu", maPhieu),
+                new OracleParameter(":ngayLap", ngayLap),
+                new OracleParameter(":maBHYT", maBHYT),
+                new OracleParameter(":trangThaiThanhToan", trangThaiThanhToan),
+                new OracleParameter(":maBenhNhan", maBenhNhan),
+                new OracleParameter(":nvLap", nvLap),
+                new OracleParameter(":nvThanhToan", nvThanhToan),
+                new OracleParameter(":maLichLamViec", maLichLamViec),
+                new OracleParameter(":tinhTrangSucKhoe", tinhTrangSucKhoe),
+                new OracleParameter(":sttTiepNhan", sttTiepNhan),
+                new OracleParameter(":sttKham", sttKham),
+                new OracleParameter(":hinhThucDangKy", hinhThucDangKy)
+            };
+
+            // Thực hiện chèn dữ liệu và trả về kết quả
+            return db.ExecuteNonQuery(query, parameters);
+        }
+
+        public int DemSoPhieuKhamTheoLichLamViec(string maLichLamViec)
+        {
+            string query = @"
+            SELECT COUNT(*) 
+            FROM PHIEUDANGKY pdk
+            WHERE pdk.LICHLAMVIEC = :maLichLamViec";
+
+            OracleParameter[] parameters = new OracleParameter[]
+            {
+                new OracleParameter(":maLichLamViec", maLichLamViec)
+            };
+
+            DataTable dt = db.ExecuteQuery(query, parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0][0]);
+            }
+            return 0;
+        }
 
     }
 }
