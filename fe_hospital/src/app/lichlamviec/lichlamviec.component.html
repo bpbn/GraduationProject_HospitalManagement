@@ -26,13 +26,13 @@
         <div class="calendar-table__body">
           <div class="calendar-table__row">
             <!-- Tuần 1 -->
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>1</span></div></div>
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>2</span></div></div>
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>3</span></div></div>
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>4</span></div></div>
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>5</span></div></div>
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>6</span></div></div>
-            <div class="calendar-table__col"><div class="calendar-table__item"><span>7</span></div></div>
+            <div *ngFor="let item of week1; let i = index">
+              <div class="calendar-table__col" [class.calendar-table__event]="workdays.includes(item)">
+                <div class="calendar-table__item">
+                  <span>{{item}}</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="calendar-table__row">
             <!-- Tuần 2 -->

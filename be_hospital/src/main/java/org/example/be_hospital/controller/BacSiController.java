@@ -71,7 +71,7 @@ public class BacSiController {
 
     // Lấy danh sách học vị đã sắp xếp theo bậc của bác sĩ
     @GetMapping("/hocvi/{maBacSi}")
-    public String layHocViSapXep(@PathVariable String maBacSi) {
+    public List<String> layHocViSapXep(@PathVariable String maBacSi) {
         return bacSiDAO.layHocViSapXepTheoBac(maBacSi);
     }
 

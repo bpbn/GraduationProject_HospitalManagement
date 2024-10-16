@@ -30,10 +30,7 @@ export class CtbacsiComponent {
 
   ttbacsi: any = {};
   id: string = '';
-  ListDanhHieu: any[] = [];
-  DanhHieu: string = '';
-  ListGioiThieu: string[] = [];
-  date: any[] = [];
+  DanhHieu: string[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(param => {
@@ -41,7 +38,6 @@ export class CtbacsiComponent {
     });
     this.getTTBS();
     this.getDanhHieu();
-    debugger;
   }
 
   getTTBS() {

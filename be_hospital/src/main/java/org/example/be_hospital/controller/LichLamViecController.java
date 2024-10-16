@@ -4,6 +4,8 @@ import org.example.be_hospital.DAO.LichLamViecDAO;
 import org.example.be_hospital.POJO.BacSi;
 import org.example.be_hospital.POJO.LichLamViec;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -27,4 +29,11 @@ public class LichLamViecController {
     public List<BacSi> layBacSiTheoNgayLam(@RequestParam Date ngayLam) {
         return lichLamViecDAO.layBacSiTheoNgayLam(ngayLam);
     }
+
+    @GetMapping("/tachNgayTheoTuan/{i}")
+    public ResponseEntity tachNgayTheoTuan(@PathVariable int i) {
+        List<Integer> dates = lichLamViecDAO.tachNgayTheoTuan(i);
+        return new ResponseEntity<>(dates, HttpStatus.OK);
+    }
+
 }

@@ -26,8 +26,6 @@ export class LichlamviecComponent {
   week5: number[] = [];
   workdays: number[] = [];
 
-
-
   ngOnInit() {
     this.getWeek1();
     this.getWeek2();

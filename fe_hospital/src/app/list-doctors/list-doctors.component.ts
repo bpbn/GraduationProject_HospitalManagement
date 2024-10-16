@@ -54,7 +54,6 @@ export class ListDoctorsComponent {
     this.bacsiService.getAllDoctor().subscribe((res:any)=>{
         this.ListBacSi = res;
         this.originalListBacSi = [...this.ListBacSi]; 
-        debugger;
     })
   }
 
