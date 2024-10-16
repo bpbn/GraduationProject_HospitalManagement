@@ -50,6 +50,7 @@
     <Compile Include="DBConnect.cs" />
     <Compile Include="LichLamViecDAL.cs" />
     <Compile Include="PhieuDangKyDAL.cs" />
+    <Compile Include="PhieuKhamDAL.cs" />
     <Compile Include="PhongDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanDAL.cs" />

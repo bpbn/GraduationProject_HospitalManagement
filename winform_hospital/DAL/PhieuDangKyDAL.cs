@@ -85,17 +85,27 @@ namespace DAL
             return count;
         }
 
-        public int DemSoPhieuDangKyHienTai(DateTime ngayHienTai)
+        public int DemSoPhieuDangKyTheoNgay(DateTime ngayHienTai)
         {
-            string query = "SELECT COUNT(*) FROM PHIEUDANGKY WHERE NGAYDANGKY = :ngayHienTai";
+            string query = @"
+                        SELECT COUNT(*) 
+                        FROM PHIEUDANGKY pdk
+                        JOIN LICHLAMVIEC llv ON pdk.LICHLAMVIEC = llv.MALICH
+                        WHERE TRUNC(llv.NGAYLAM) = :ngayHienTai";
+
             OracleParameter[] parameters = new OracleParameter[]
             {
-        new OracleParameter(":ngayHienTai", ngayHienTai)
+                new OracleParameter(":ngayHienTai", ngayHienTai.Date)
             };
 
             DataTable dt = db.ExecuteQuery(query, parameters);
-            return dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0][0]) : 0;
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0][0]);
+            }
+            return 0;
         }
+
 
     }
 }

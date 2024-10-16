@@ -40,10 +40,12 @@ namespace BLL
             return pdkDAL.DemSoPhieuDangKy(); // Gọi phương thức từ DAL
         }
 
-        public int DemSoPhieuDangKyHienTai()
+        public int LaySTTTiepNhanTheoNgay(DateTime ngayHienTai)
         {
-            return pdkDAL.DemSoPhieuDangKyHienTai(DateTime.Now.Date); // Gọi phương thức từ DAL
+            int soPhieu = pdkDAL.DemSoPhieuDangKyTheoNgay(ngayHienTai);
+            return soPhieu + 1; // Tăng 1 để lấy số thứ tự tiếp nhận kế tiếp
         }
+
 
     }
 }

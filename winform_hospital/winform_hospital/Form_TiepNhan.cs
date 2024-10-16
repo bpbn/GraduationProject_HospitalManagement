@@ -30,9 +30,12 @@ namespace winform_hospital
             lbDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
             LoadPhongComboBox();
-            HienThiSTTTiepNhan();
+            //HienThiSTTTiepNhan();
 
-            //txtSTTTiepNhan.Text = (pdkBLL.DemSoPhieuDangKyHienTai() + 1).ToString();
+            cboTenPhongKham.SelectedItem = null;
+            txtMaPhong.Clear();
+            HienThiSTTTiepNhanTheoNgayHienTai();
+            HienThiSTTKham();
         }
 
         // Hiển thị danh sách bệnh nhân (Offline)
@@ -149,8 +152,9 @@ namespace winform_hospital
                 string maPhieuDangKy = GenerateRandomCode(10);
                 txtMaPhieu.Text = maPhieuDangKy;
 
-                HienThiSTTTiepNhan();
-                //txtSTTTiepNhan.Text = (pdkBLL.DemSoPhieuDangKyHienTai() + 1).ToString();
+                //HienThiSTTTiepNhan();
+                HienThiSTTTiepNhanTheoNgayHienTai();
+                HienThiSTTKham();
             }
         }
 
@@ -197,5 +201,26 @@ namespace winform_hospital
             int soPhieu = pdkBLL.DemSoPhieuDangKy(); // Lấy số phiếu hiện có
             txtSTTTiepNhan.Text = (soPhieu + 1).ToString(); // Cộng 1 và gán vào txt
         }
+
+        private void HienThiSTTTiepNhanTheoNgayHienTai()
+        {
+            DateTime ngayHienTai = DateTime.Now.Date;
+            int sttTiepNhan = pdkBLL.LaySTTTiepNhanTheoNgay(ngayHienTai);
+
+            // Hiển thị số thứ tự tiếp nhận vào textbox
+            txtSTTTiepNhan.Text = sttTiepNhan.ToString();
+        }
+
+        private void HienThiSTTKham()
+        {
+            DateTime ngayHienTai = DateTime.Now.Date;
+            PhieuKhamBLL phieuKhamBLL = new PhieuKhamBLL();
+            int sttKham = phieuKhamBLL.LaySTTKhamTheoNgay(ngayHienTai);
+
+            // Hiển thị số thứ tự khám vào textbox
+            txtSTTKham.Text = sttKham.ToString();
+        }
+
+
     }
 }
