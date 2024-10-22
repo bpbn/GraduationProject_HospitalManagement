@@ -17,6 +17,7 @@ namespace winform_hospital
         private BenhNhanBLL bnBLL = new BenhNhanBLL();
         private PhieuDangKyBLL pdkBLL = new PhieuDangKyBLL();
         private PhongBLL phongBLL = new PhongBLL();
+        private LichLamViecBLL llvBLL = new LichLamViecBLL();
 
         public Form_TiepNhan()
         {
@@ -30,9 +31,12 @@ namespace winform_hospital
             lbDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
             LoadPhongComboBox();
-            HienThiSTTTiepNhan();
+            //HienThiSTTTiepNhan();
 
-            //txtSTTTiepNhan.Text = (pdkBLL.DemSoPhieuDangKyHienTai() + 1).ToString();
+            cboTenPhongKham.SelectedItem = null;
+            txtMaPhong.Clear();
+            HienThiSTTTiepNhanTheoNgayHienTai();
+            HienThiSTTKham();
         }
 
         // Hiển thị danh sách bệnh nhân (Offline)
@@ -107,6 +111,8 @@ namespace winform_hospital
             TimKiemBenhNhan();
         }
 
+        string maBN = null;
+
         private void dgvBenhNhanDK_SelectionChanged(object sender, EventArgs e)
         {
             if (rdoOnl.Checked && dgvBenhNhanDK.SelectedRows.Count > 0)
@@ -118,11 +124,13 @@ namespace winform_hospital
                 DataTable dt = pdkBLL.LayThongTinChiTietPhieuDangKy(maPhieu);
                 if (dt.Rows.Count > 0)
                 {
+                    
                     string tenBenhNhan = dt.Rows[0]["HOTEN"].ToString();
                     string sttTiepNhan = dt.Rows[0]["STTTIEPNHAN"].ToString();
                     string sttKham = dt.Rows[0]["STTKHAM"].ToString();
                     string bhyt = dt.Rows[0]["MABHYT"].ToString();
                     string maPhong = dt.Rows[0]["MAPHONG"].ToString();
+                    string maBenhNhan = dt.Rows[0]["MABENHNHAN"].ToString();
 
                     // Lấy tên phòng khám từ mã phòng
                     string tenPhong = phongBLL.LayTenPhong(maPhong);
@@ -135,6 +143,7 @@ namespace winform_hospital
                     txtBHYT.Text = bhyt;
                     cboTenPhongKham.Text = tenPhong;
                     txtMaPhong.Text = maPhong;
+                    maBN = maBenhNhan;
                 }
             }
 
@@ -143,15 +152,20 @@ namespace winform_hospital
                 Reset();
                 // Lấy tên bệnh nhân từ dòng đã chọn
                 string tenBenhNhan = dgvBenhNhanDK.SelectedRows[0].Cells["HOTEN"].Value.ToString();
+                string maBenhNhan = dgvBenhNhanDK.SelectedRows[0].Cells["MABENHNHAN"].Value.ToString();
 
                 // Hiển thị tên bệnh nhân lên txtTenBenhNhan
                 txtTenBenhNhan.Text = tenBenhNhan;
                 string maPhieuDangKy = GenerateRandomCode(10);
                 txtMaPhieu.Text = maPhieuDangKy;
+                maBN = maBenhNhan;
 
-                HienThiSTTTiepNhan();
-                //txtSTTTiepNhan.Text = (pdkBLL.DemSoPhieuDangKyHienTai() + 1).ToString();
+                //HienThiSTTTiepNhan();
+                HienThiSTTTiepNhanTheoNgayHienTai();
+                HienThiSTTKham();
             }
+
+            
         }
 
         public void Reset()
@@ -189,6 +203,7 @@ namespace winform_hospital
                 // Lấy mã phòng từ giá trị của combo box
                 string maPhong = cboTenPhongKham.SelectedValue.ToString();
                 txtMaPhong.Text = maPhong; // Gán mã phòng vào TextBox
+                HienThiSTTKham();
             }
         }
 
@@ -196,6 +211,101 @@ namespace winform_hospital
         {
             int soPhieu = pdkBLL.DemSoPhieuDangKy(); // Lấy số phiếu hiện có
             txtSTTTiepNhan.Text = (soPhieu + 1).ToString(); // Cộng 1 và gán vào txt
+        }
+
+        private void HienThiSTTTiepNhanTheoNgayHienTai()
+        {
+            DateTime ngayHienTai = DateTime.Now.Date;
+            int sttTiepNhan = pdkBLL.LaySTTTiepNhanTheoNgay(ngayHienTai);
+
+            // Hiển thị số thứ tự tiếp nhận vào textbox
+            txtSTTTiepNhan.Text = sttTiepNhan.ToString();
+        }
+
+        private void HienThiSTTKham()
+        {
+            string maPhong = txtMaPhong.Text;
+            DateTime ngayHienTai = DateTime.Now.Date;
+            string maLichLamViec = llvBLL.LayMaLichLamViecTheoPhongVaNgay(maPhong, ngayHienTai);
+            if (maLichLamViec != null)
+            {
+                int sttKham = pdkBLL.LaySTTKhamTheoLichLamViec(maLichLamViec);
+
+                // Hiển thị số thứ tự khám vào textbox
+                txtSTTKham.Text = sttKham.ToString();
+            }
+            else
+            {
+                txtSTTKham.Clear();
+            }
+            
+        }
+
+        private void btnLapPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PhieuDangKyBLL phieuDangKyBLL = new PhieuDangKyBLL();
+
+                // Lấy mã lịch làm việc dựa trên mã phòng và ngày hiện tại
+                string maPhong = txtMaPhong.Text;
+                DateTime ngayHienTai = DateTime.Now;
+                string maLichLamViec = llvBLL.LayMaLichLamViecTheoPhongVaNgay(maPhong, ngayHienTai);
+
+                if (maLichLamViec == null)
+                {
+                    MessageBox.Show("Không tìm thấy lịch làm việc cho phòng này vào ngày hiện tại.");
+                    return;
+                }
+
+                // Thu thập thông tin từ form
+                string maPhieu = txtMaPhieu.Text;
+                DateTime ngayLap = DateTime.Now;
+                String maBHYT = "";
+                if (cbBHYT.Checked)
+                {
+                    maBHYT = txtBHYT.Text;
+                }
+                else
+                {
+                    maBHYT = null;
+                }    
+                string trangThaiThanhToan = null;
+                string maBenhNhan = maBN;
+                string nvLap = "NV0003";
+                string nvThanhToan = null;
+                string tinhTrangSucKhoe = rtxtLyDoKham.Text;
+                int sttTiepNhan = Convert.ToInt32(txtSTTTiepNhan.Text);
+                int sttKham = Convert.ToInt32(txtSTTKham.Text);
+                string hinhThucDangKy = "";
+
+                if (rdoOff.Checked)
+                {
+                    hinhThucDangKy = "Trực tiếp";
+                }
+                else
+                {
+                    hinhThucDangKy = "Trực tuyến";
+                }    
+
+                // Lưu thông tin phiếu đăng ký
+                bool isSuccess = pdkBLL.LuuPhieuDangKy(maPhieu, ngayLap, maBHYT, trangThaiThanhToan,
+                                                               maBenhNhan, nvLap, nvThanhToan, maLichLamViec,
+                                                               tinhTrangSucKhoe, sttTiepNhan, sttKham, hinhThucDangKy);
+
+                if (isSuccess)
+                {
+                    MessageBox.Show("Lập phiếu thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Lập phiếu thất bại.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+            }
         }
     }
 }

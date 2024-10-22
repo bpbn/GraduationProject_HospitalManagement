@@ -37,5 +37,28 @@ namespace DAL
             }
         }
 
+        public string LayMaLichLamViecTheoPhongVaNgay(string maPhong, DateTime ngayLam)
+        {
+            string query = @"
+            SELECT MALICH 
+            FROM LICHLAMVIEC 
+            WHERE MAPHONG = :maPhong AND TRUNC(NGAYLAM) = :ngayLam";
+
+            OracleParameter[] parameters = new OracleParameter[]
+            {
+            new OracleParameter(":maPhong", maPhong),
+            new OracleParameter(":ngayLam", ngayLam.Date)
+            };
+
+            DataTable dt = db.ExecuteQuery(query, parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["MALICH"].ToString();
+            }
+
+            return null; // Nếu không tìm thấy lịch làm việc
+        }
+
+
     }
 }

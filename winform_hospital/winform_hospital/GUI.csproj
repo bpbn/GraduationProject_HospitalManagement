@@ -126,6 +126,18 @@
     <Compile Include="UC\UC_LapLichLamViec.Designer.cs">
       <DependentUpon>UC_LapLichLamViec.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\UC_LichLamViec.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC_LichLamViec.Designer.cs">
+      <DependentUpon>UC_LichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC_PhieuKhamKeDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC_PhieuKhamKeDon.Designer.cs">
+      <DependentUpon>UC_PhieuKhamKeDon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form_DangNhap.resx">
       <DependentUpon>Form_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +159,12 @@
     </Compile>
     <EmbeddedResource Include="UC\UC_LapLichLamViec.resx">
       <DependentUpon>UC_LapLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC_LichLamViec.resx">
+      <DependentUpon>UC_LichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC_PhieuKhamKeDon.resx">
+      <DependentUpon>UC_PhieuKhamKeDon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
