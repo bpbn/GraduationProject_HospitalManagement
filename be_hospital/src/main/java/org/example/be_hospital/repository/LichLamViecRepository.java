@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface LichLamViecRepository extends JpaRepository<LichLamViec, String
 
     // Tìm bác sĩ theo ngày làm việc
     @Query("SELECT l.bacSi FROM LichLamViec l WHERE l.ngayLam = :ngayLam")
-    List<BacSi> findBacSiByNgayLam(Date ngayLam);
+    List<BacSi> findBacSiByNgayLam(LocalDate ngayLam);
 
     LichLamViec findByBacSi_MaBacSiAndNgayLam(String maBacSi, Date ngayLam);
 }

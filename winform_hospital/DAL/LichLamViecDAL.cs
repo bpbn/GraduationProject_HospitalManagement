@@ -24,6 +24,7 @@ namespace DAL
         //Insert
         public void ThemLichLamViec(string maLich, string maBacSi, string maPhong, DateTime ngayLam)
         {
+            DateTime dateOnly = ngayLam.Date; // Lấy phần ngày
             string query = "INSERT INTO LICHLAMVIEC VALUES (:maLich, :maBacSi, :maPhong, :ngayLam)";
             using (OracleConnection con = db.GetConnection())
             {
@@ -32,10 +33,11 @@ namespace DAL
                 cmd.Parameters.Add(new OracleParameter("maLich", maLich));
                 cmd.Parameters.Add(new OracleParameter("maBacSi", maBacSi));
                 cmd.Parameters.Add(new OracleParameter("maPhong", maPhong));
-                cmd.Parameters.Add(new OracleParameter("ngayLam", ngayLam));
+                cmd.Parameters.Add(new OracleParameter("ngayLam", dateOnly));
                 cmd.ExecuteNonQuery();
             }
         }
+
 
         public string LayMaLichLamViecTheoPhongVaNgay(string maPhong, DateTime ngayLam)
         {

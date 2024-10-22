@@ -17,13 +17,15 @@ public class LichLamViecDAO {
     @Autowired
     private LichLamViecRepository lichLamViecRepository;
 
+    public List<LichLamViec> getAllLichLamViec() {return lichLamViecRepository.findAll();}
+
     // Tìm ngày làm theo mã bác sĩ
     public List<LichLamViec> layLichLamTheoMaBacSi(String maBacSi) {
         return lichLamViecRepository.findByBacSi_MaBacSi(maBacSi);
     }
 
     // Tìm bác sĩ theo ngày làm
-    public List<BacSi> layBacSiTheoNgayLam(Date ngayLam) {
+    public List<BacSi> layBacSiTheoNgayLam(LocalDate ngayLam) {
         return lichLamViecRepository.findBacSiByNgayLam(ngayLam);
     }
 

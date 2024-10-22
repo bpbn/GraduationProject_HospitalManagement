@@ -11,7 +11,7 @@ namespace winform_hospital.DAL
 {
     internal class DBConnect
     {
-        string conStr = "User Id=sys;Password=123;Data Source=localhost:1521/orcl21;DBA Privilege=SYSDBA;";
+        string conStr = "User Id=C##BPBN;Password=123;Data Source=localhost:1521/orcl2;";
 
         public OracleConnection GetConnection()
         {

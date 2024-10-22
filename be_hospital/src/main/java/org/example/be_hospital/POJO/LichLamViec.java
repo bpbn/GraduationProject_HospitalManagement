@@ -3,6 +3,7 @@ package org.example.be_hospital.POJO;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -17,7 +18,7 @@ public class LichLamViec {
     @ManyToOne
     @JoinColumn(name = "MABACSI")
     private BacSi bacSi;
-    private Date ngayLam;
+    private LocalDate ngayLam;
 
     @ManyToOne
     @JoinColumn(name = "MAPHONG")

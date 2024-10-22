@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.example.be_hospital.POJO.BacSi;
 import org.example.be_hospital.POJO.Phong;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,6 +14,6 @@ import java.util.Date;
 public class LichLamViecDTO {
     private String maLich;
     private BacSi bacSi;
-    private Date ngayLam;
+    private LocalDate ngayLam;
     private Phong phongLamViec;
 }
