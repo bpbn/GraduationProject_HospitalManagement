@@ -81,13 +81,9 @@ public class BacSiDAO {
 
         BacSi bacSi = bacSiRepository.findById(maBacSi).orElse(null);
 
-
-
         // Khởi tạo danh sách kết quả
 
         List<String> ketQua = new ArrayList<>();
-
-
 
         if (bacSi != null) {
 

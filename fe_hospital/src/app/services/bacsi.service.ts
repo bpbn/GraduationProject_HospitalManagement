@@ -9,6 +9,7 @@ export class BacsiService {
 
   apiURL: string = "http://localhost:1314/bacsi"
   apiURL2: string = "http://localhost:1314/phieudangky"
+  apiURL3: string = "http://localhost:1314/lichlamviec"
 
   constructor(private http: HttpClient){}
 
@@ -60,6 +61,9 @@ export class BacsiService {
     return this.http.get<number>(this.apiURL + "/kiemTraHVCuaBS/" + id + "/" + maHocVi);
   }
 
+  getDateByDoctor(maBacSi: string){
+    return this.http.get(this.apiURL3 + "/ngaylamtheobacsi/" + maBacSi);
+  }
 
 //chưa sửa
   getAvailableDatesForDoctor(maBacSi: string){

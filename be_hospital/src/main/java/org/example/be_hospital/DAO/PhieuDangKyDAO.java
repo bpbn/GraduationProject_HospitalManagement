@@ -1,8 +1,7 @@
 package org.example.be_hospital.DAO;
 
-import org.example.be_hospital.DTO.PhieuDangKyDTO;
 import org.example.be_hospital.POJO.PhieuDangKy;
-import org.example.be_hospital.repository.PhieuDangKyReponsitory;
+import org.example.be_hospital.repository.PhieuDangKyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @Service
 public class PhieuDangKyDAO {
     @Autowired
-    private PhieuDangKyReponsitory phieuDangKyRepository;
+    private PhieuDangKyRepository phieuDangKyRepository;
 
     public List<PhieuDangKy> getAllBenhNhan() {
         return phieuDangKyRepository.findAll();
@@ -38,7 +37,8 @@ public class PhieuDangKyDAO {
         // Sinh mã PDK mới
         String maPDK = generateMaPDK();
         phieuDangKy.setMaPhieuDangKy(maPDK);
-        // Thiết lập ngày lập hiện tại
+        // Thiết lập ngày lập hiện tại-+
+
         phieuDangKy.setNgayLap(new Date());
 
         // Thiết lập hinh thức đăng ký mặc định

@@ -59,8 +59,8 @@
           <div class="p-2 w-full">
             <div class="relative">
               <label for="bacSi" class="leading-7 text-sm text-gray-600">Chọn bác sĩ</label>
-              <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg" (change)="onDoctorChange()">
-                <option *ngFor="let doctor of doctors" [value]="doctor.maNhanVien">{{ doctor.tenNhanVien }}</option>
+              <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg">
+                <option *ngFor="let doctor of doctors" [value]="doctor.maBacSi">{{ doctor.hoTen }}</option>
               </select>
             </div>
           </div>
@@ -83,7 +83,7 @@
           <div class="p-2 w-full">
             <div class="relative">
               <label for="bacSi" class="leading-7 text-sm text-gray-600">Chọn bác sĩ</label>
-              <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg" (change)="onDoctorChange()">
+              <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg">
                 <option *ngFor="let doctor of doctors" [value]="doctor.maNhanVien">{{ doctor.tenNhanVien }}</option>
               </select>
             </div>
