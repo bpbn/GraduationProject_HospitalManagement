@@ -12,7 +12,7 @@ public interface PhieuDangKyRepository extends JpaRepository<PhieuDangKy,String>
     @Query("SELECT MAX(maPhieuDangKy) FROM PhieuDangKy")
     String findMaxMaPhieuDangKy();
 
-    @Query("SELECT MAX(pd.STTKham) FROM PhieuDangKy pd WHERE pd.lichLamViec = :malich")
+    @Query("SELECT COALESCE(MAX(pd.STTKham), 0) FROM PhieuDangKy pd WHERE pd.lichLamViec = :malich")
     long findMaxSTTByLich(@Param("malich") String malich);
 
 }

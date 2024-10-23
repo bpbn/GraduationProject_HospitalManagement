@@ -67,14 +67,14 @@ export class CardDatlichComponent implements OnInit {
   showDateSection() {
     this.showDoctor = false;
     this.showDate = true;
-    this.pdk.bacSi = ''; 
+    this.pdk.maBacSi = ''; 
     this.pdk.ngayKham = '';
     this.pdk.khungGioKham = '';
   }
 
   onDoctorChange() {
-    if (this.pdk.bacSi) {
-      this.bacsiService.getDateByDoctor(this.pdk.bacSi)
+    if (this.pdk.maBacSi) {
+      this.bacsiService.getDateByDoctor(this.pdk.maBacSi)
       .subscribe(response => {
           if (Array.isArray(response)) {
             this.workingDays = response.map(item => {
@@ -85,7 +85,7 @@ export class CardDatlichComponent implements OnInit {
               }
               return null;
             }).filter((date): date is Date => date !== null); 
-            console.log("Mã bác sĩ đã chọn:", this.pdk.bacSi);
+            console.log("Mã bác sĩ đã chọn:", this.pdk.maBacSi);
             console.log('Ngày làm việc của bác sĩ:', this.workingDays);
           } else {
             console.error('Phản hồi không phải là mảng:', response);
@@ -114,6 +114,7 @@ export class CardDatlichComponent implements OnInit {
       }, error => {
         console.error('Lỗi khi gọi API lấy danh sách bác sĩ:', error);
       });
+      debugger;
   }
 
   
@@ -132,6 +133,7 @@ export class CardDatlichComponent implements OnInit {
   
    
   onSubmit() {
+    debugger;
     if (this.isFormValid()) {
       this.bacsiService.themPhieuDangKy(this.pdk).subscribe(
         response => {
@@ -152,6 +154,6 @@ export class CardDatlichComponent implements OnInit {
   }
 
   isFormValid(): boolean {
-    return this.pdk.bacSi && this.pdk.ngayKham;
+    return this.pdk.maBacSi && this.pdk.ngayKham;
   }
 }

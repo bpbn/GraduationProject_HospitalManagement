@@ -60,9 +60,6 @@ public class PhieuDangKyDAO {
 
         String maLich = timLichLamViec(maBacSi, ngayKham);
 
-        System.out.println(maBacSi);
-        System.out.println(ngayKham);
-
         if (maLich.equals("Lich lam viec khong tim thay")) {
             throw new RuntimeException("Không tìm thấy lịch làm việc cho bác sĩ vào ngày này.");
         }
@@ -79,7 +76,7 @@ public class PhieuDangKyDAO {
         phieuDangKy.setTrangThaiThanhToan("Chưa thanh toán");
 
         long stt = phieuDangKyRepository.findMaxSTTByLich(maLich);
-        phieuDangKy.setSTTKham(stt > 0 ? (int)(stt + 1) : 1);
+        phieuDangKy.setSTTKham(stt >= 0 ? (int)(stt + 1) : 1);
 
         return phieuDangKyRepository.save(phieuDangKy);
     }
