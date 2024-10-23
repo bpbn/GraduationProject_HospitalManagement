@@ -46,7 +46,8 @@ import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
     CardDatlichComponent,
     CtbacsiComponent,
     MatCardModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    HttpClientModule
 ],
   providers: [
     provideAnimations(),

@@ -46,7 +46,7 @@ public class LichLamViecDAO {
 
         for (int j = 0; j < 7; j++) {
             if (currentDay.isAfter(today.withDayOfMonth(today.lengthOfMonth()))) {
-                // Handle end of month and fill remaining days with next month
+
                 int daysInCurrentMonth = currentDay.lengthOfMonth();
                 for (int k = weekDays.size(); k < 7; k++) {
                     weekDays.add(currentDay.getDayOfMonth());
@@ -65,13 +65,5 @@ public class LichLamViecDAO {
         return weekDays;
     }
 
-    public String timLichLamViec(String maBacSi, Date ngayLam) {
-        LichLamViec lichLamViec = lichLamViecRepository.findByBacSi_MaBacSiAndNgayLam(maBacSi, ngayLam);
-        if (lichLamViec != null) {
-            return lichLamViec.getMaLich();
-        } else {
-            return "Lich lam viec khong tim thay";
-        }
-    }
 
 }

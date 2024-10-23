@@ -19,5 +19,5 @@ public interface LichLamViecRepository extends JpaRepository<LichLamViec, String
     @Query("SELECT l.bacSi FROM LichLamViec l WHERE l.ngayLam = :ngayLam")
     List<BacSi> findBacSiByNgayLam(LocalDate ngayLam);
 
-    LichLamViec findByBacSi_MaBacSiAndNgayLam(String maBacSi, Date ngayLam);
+    LichLamViec findByBacSi_MaBacSiAndNgayLam(String maBacSi, LocalDate ngayLam);
 }

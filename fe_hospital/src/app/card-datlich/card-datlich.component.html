@@ -14,34 +14,34 @@
         <div class="p-2 w-1/2">
           <div class="relative">
             <label for="tenBenhNhan" class="leading-7 text-sm text-gray-600">Tên Bệnh Nhân</label>
-            <input [(ngModel)]="pdk.tenBenhNhan" type="text" id="tenBenhNhan" name="tenBenhNhan" class="w-full border rounded py-1 px-3 text-lg" readonly>
+            <input [(ngModel)]="pdk.tenBenhNhan" type="text" id="tenBenhNhan" name="tenBenhNhan" class="w-full border rounded py-1 px-3 text-lg" >
           </div>
         </div>
         <div class="p-2 w-1/2">
           <div class="relative">
             <label for="gioiTinh" class="leading-7 text-sm text-gray-600">Giới Tính</label>
-            <input [(ngModel)]="pdk.gioiTinh" type="text" id="gioiTinh" name="gioiTinh" class="w-full border rounded py-1 px-3 text-lg" readonly>
+            <input [(ngModel)]="pdk.gioiTinh" type="text" id="gioiTinh" name="gioiTinh" class="w-full border rounded py-1 px-3 text-lg" >
           </div>
         </div>
 
         <div class="p-2 w-1/2">
           <div class="relative">
             <label for="namSinh" class="leading-7 text-sm text-gray-600">Năm Sinh</label>
-            <input [(ngModel)]="pdk.namSinh" type="number" id="namSinh" name="namSinh" class="w-full border rounded py-1 px-3 text-lg" readonly>
+            <input [(ngModel)]="pdk.namSinh" type="number" id="namSinh" name="namSinh" class="w-full border rounded py-1 px-3 text-lg" >
           </div>
         </div>
 
         <div class="p-2 w-1/2">
           <div class="relative">
             <label for="sdt" class="leading-7 text-sm text-gray-600">Số Điện Thoại</label>
-            <input [(ngModel)]="pdk.sdt" type="text" id="sdt" name="sdt" class="w-full border rounded py-1 px-3 text-lg" readonly>
+            <input [(ngModel)]="pdk.sdt" type="text" id="sdt" name="sdt" class="w-full border rounded py-1 px-3 text-lg" >
           </div>
         </div>
 
         <div class="p-2 w-1/2">
           <div class="relative">
             <label for="diaChi" class="leading-7 text-sm text-gray-600">Địa Chỉ</label>
-            <input [(ngModel)]="pdk.diaChi" type="text" id="diaChi" name="diaChi" class="w-full border rounded py-1 px-3 text-lg" readonly>
+            <input [(ngModel)]="pdk.diaChi" type="text" id="diaChi" name="diaChi" class="w-full border rounded py-1 px-3 text-lg" >
           </div>
         </div>
 
@@ -59,7 +59,7 @@
           <div class="p-2 w-full">
             <div class="relative">
               <label for="bacSi" class="leading-7 text-sm text-gray-600">Chọn bác sĩ</label>
-              <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg">
+              <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg" (change)="onDoctorChange()">
                 <option *ngFor="let doctor of doctors" [value]="doctor.maBacSi">{{ doctor.hoTen }}</option>
               </select>
             </div>
@@ -68,9 +68,19 @@
           <div class="p-2 w-full">
             <div class="relative">
               <label for="ngayKham" class="leading-7 text-sm text-gray-600">Chọn ngày muốn khám</label>
-              <input [(ngModel)]="pdk.ngayKham" type="date" id="ngayKham" name="ngayKham" class="w-full border rounded py-1 px-3 text-lg">
+              <div style="display: flex; align-items: center;">
+                <input [(ngModel)]="pdk.ngayKham" 
+                       [matDatepickerFilter]="myFilter" 
+                       matInput 
+                       [matDatepicker]="picker" 
+                       id="ngayKham" 
+                       name="ngayKham" 
+                       class="w-full border rounded py-1 px-3 text-lg">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </div>
             </div>
-          </div>
+          </div>          
         </div>
 
         <div *ngIf="showDate" class="w-full flex flex-wrap -m-2">
@@ -84,7 +94,7 @@
             <div class="relative">
               <label for="bacSi" class="leading-7 text-sm text-gray-600">Chọn bác sĩ</label>
               <select [(ngModel)]="pdk.bacSi" id="bacSi" name="bacSi" class="w-full border rounded py-1 px-3 text-lg">
-                <option *ngFor="let doctor of doctors" [value]="doctor.maNhanVien">{{ doctor.tenNhanVien }}</option>
+                <option *ngFor="let doctor of doctors" [value]="doctor.maBacSi">{{ doctor.hoTen }}</option>
               </select>
             </div>
           </div>

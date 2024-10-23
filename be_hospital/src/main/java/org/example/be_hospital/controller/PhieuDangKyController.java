@@ -21,7 +21,7 @@ public class PhieuDangKyController {
         return phieuDangKyDAO.getAllBenhNhan();
     }
     @PostMapping("/them")
-    public PhieuDangKy addPhieuDangKy(@RequestBody PhieuDangKy phieuDangKy) {
+    public PhieuDangKy addPhieuDangKy(@RequestBody PhieuDangKyDTO phieuDangKy) {
         return phieuDangKyDAO.addPhieuDangKy(phieuDangKy);
     }
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.be_hospital.POJO.LichLamViec;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -19,4 +20,6 @@ public class PhieuDangKyDTO {
     private String tinhTrangSucKhoe;
     private Integer STTTiepNhan;
     private String hinhThucDangKy;
+    private LocalDate ngayKham;
+    private String maBacSi;
 }

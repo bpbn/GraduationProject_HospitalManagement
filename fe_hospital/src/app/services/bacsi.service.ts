@@ -1,6 +1,9 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable
+
+ } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -65,21 +68,17 @@ export class BacsiService {
     return this.http.get(this.apiURL3 + "/ngaylamtheobacsi/" + maBacSi);
   }
 
-//chưa sửa
-  getAvailableDatesForDoctor(maBacSi: string){
-    return this.http.get(this.apiURL2 + "/ngaylamvieccuabs/" + maBacSi);
+  getDoctorByDate(ngayLam: string) {
+    return this.http.get(`${this.apiURL3}/bacsitheongaylam?ngayLam=${ngayLam}`);
   }
 
-  getNgayLamCuaBacSi(id: string){
-    return this.http.get(this.apiURL + "/ngayLamViec/" + id);
+  themPhieuDangKy(pdk: any): Observable<string> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<string>(`${this.apiURL2}/them`, pdk, { headers });
   }
 
   getNgayLamCuaBacSiTrongThang(id: string){
     return this.http.get(this.apiURL + "/ngayLamViecTrongThang/" + id);
-  }
-
-  getCaLamCuaBacSi(id: string, date: string){
-    return this.http.get(this.apiURL + "/caLamViec/" + id + "/" + date);
   }
 
   getNgayTrongThang(i: number){

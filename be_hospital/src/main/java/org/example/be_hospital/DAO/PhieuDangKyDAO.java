@@ -1,10 +1,15 @@
 package org.example.be_hospital.DAO;
 
+import org.example.be_hospital.DTO.PhieuDangKyDTO;
+import org.example.be_hospital.POJO.LichLamViec;
 import org.example.be_hospital.POJO.PhieuDangKy;
+import org.example.be_hospital.repository.LichLamViecRepository;
 import org.example.be_hospital.repository.PhieuDangKyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +17,10 @@ import java.util.List;
 public class PhieuDangKyDAO {
     @Autowired
     private PhieuDangKyRepository phieuDangKyRepository;
+    @Autowired
+    private LichLamViecRepository lichLamViecRepository;
+    @Autowired
+    private LichLamViecDAO lichLamViecDAO;
 
     public List<PhieuDangKy> getAllBenhNhan() {
         return phieuDangKyRepository.findAll();
@@ -33,20 +42,46 @@ public class PhieuDangKyDAO {
         return prefix + String.format("%04d", newNumber);
     }
 
-    public PhieuDangKy addPhieuDangKy(PhieuDangKy phieuDangKy) {
-        // Sinh mã PDK mới
-        String maPDK = generateMaPDK();
-        phieuDangKy.setMaPhieuDangKy(maPDK);
-        // Thiết lập ngày lập hiện tại-+
+    public String timLichLamViec(String maBacSi, LocalDate ngayLam) {
+        LichLamViec lichLamViec = lichLamViecRepository.findByBacSi_MaBacSiAndNgayLam(maBacSi, ngayLam);
+        if (lichLamViec != null) {
+            return lichLamViec.getMaLich();
+        } else {
+            return "Lich lam viec khong tim thay";
+        }
+    }
 
+
+    public PhieuDangKy addPhieuDangKy(PhieuDangKyDTO phieuDangKyDTO) {
+        PhieuDangKy phieuDangKy = new PhieuDangKy();
+
+        String maBacSi = phieuDangKyDTO.getMaBacSi();
+        LocalDate ngayKham = phieuDangKyDTO.getNgayKham();
+
+        String maLich = timLichLamViec(maBacSi, ngayKham);
+
+        System.out.println(maBacSi);
+        System.out.println(ngayKham);
+
+        if (maLich.equals("Lich lam viec khong tim thay")) {
+            throw new RuntimeException("Không tìm thấy lịch làm việc cho bác sĩ vào ngày này.");
+        }
+
+        LichLamViec lichLamViec = lichLamViecRepository.findById(maLich).orElse(null);
+        if (lichLamViec == null) {
+            throw new RuntimeException("Lịch làm việc không tồn tại.");
+        }
+        phieuDangKy.setLichLamViec(lichLamViec.getMaLich());
+
+        phieuDangKy.setMaPhieuDangKy(generateMaPDK());
         phieuDangKy.setNgayLap(new Date());
-
-        // Thiết lập hinh thức đăng ký mặc định
-        phieuDangKy.setHinhThucDangKy("Trực tiếp");
-
-        // Thiết lập trạng thái thanh toán mặc định
+        phieuDangKy.setHinhThucDangKy("Trực tuyến");
         phieuDangKy.setTrangThaiThanhToan("Chưa thanh toán");
-        // Lưu vào cơ sở dữ liệu
+
+        long stt = phieuDangKyRepository.findMaxSTTByLich(maLich);
+        phieuDangKy.setSTTKham(stt > 0 ? (int)(stt + 1) : 1);
+
         return phieuDangKyRepository.save(phieuDangKy);
     }
+
 }

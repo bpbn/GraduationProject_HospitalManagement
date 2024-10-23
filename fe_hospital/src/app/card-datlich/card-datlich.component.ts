@@ -30,7 +30,7 @@ export class CardDatlichComponent implements OnInit {
     maBHYT: '',
     ngayLap: '',
     trangThaiThanhToan: '',
-    mabacSi: '',
+    maBacSi: '',
     ngayKham: '',
     nvlap: '',
     nvthanhToan: '',
@@ -72,16 +72,40 @@ export class CardDatlichComponent implements OnInit {
     this.pdk.khungGioKham = '';
   }
 
-  onDateChange() {
-    if (this.pdk.ngayKham && this.pdk.khungGioKham) {
-      
+  onDoctorChange() {
+    if (this.pdk.bacSi) {
+      this.bacsiService.getDateByDoctor(this.pdk.bacSi)
+      .subscribe(response => {
+          if (Array.isArray(response)) {
+            this.workingDays = response.map(item => {
+              if (item.ngayLam) { 
+                const date = new Date(item.ngayLam);
+                date.setHours(0, 0, 0, 0); 
+                return date;
+              }
+              return null;
+            }).filter((date): date is Date => date !== null); 
+            console.log("Mã bác sĩ đã chọn:", this.pdk.bacSi);
+            console.log('Ngày làm việc của bác sĩ:', this.workingDays);
+          } else {
+            console.error('Phản hồi không phải là mảng:', response);
+          }
+        },
+        (error: HttpErrorResponse) => {
+          console.error("Lỗi khi lấy lịch làm việc của bác sĩ:", error);
+        }
+      );
     }
   }
-
-  onShiftChange($event: any) {
-    if (this.pdk.ngayKham && this.pdk.khungGioKham) {
-   
-    }
+  
+  onDateChange() {
+    const formattedDate = this.formatDate(new Date(this.pdk.ngayKham));
+    this.bacsiService.getDoctorByDate(formattedDate).subscribe((res: any) => {
+      this.doctors = res; 
+      console.log('Danh sách bác sĩ theo ngày:', this.doctors);
+    }, error => {
+      console.error('Lỗi khi gọi API lấy bác sĩ theo ngày làm:', error);
+    });
   }
 
   loadAllDoctors() {
@@ -91,15 +115,7 @@ export class CardDatlichComponent implements OnInit {
         console.error('Lỗi khi gọi API lấy danh sách bác sĩ:', error);
       });
   }
-  
-  onShiftChange2(event: any) {
-    const selectedDate = event.value;
-    console.log('Ngày được chọn:', selectedDate);
-    if (this.pdk.bacSi && selectedDate) {
-      this.pdk.ngayKham = this.formatDate(selectedDate);
-   
-    }
-  }
+
   
   formatDate(date: Date): string {
     const year = date.getFullYear();
@@ -116,24 +132,26 @@ export class CardDatlichComponent implements OnInit {
   
    
   onSubmit() {
-   
-  this.openSnackBar('Đặt lịch hẹn thành công', 'OK');
-  this.router.navigate(['/']); 
-    // if (this.isFormValid()) {
-    //   this.themPhieuHen();
-    //   this.openSnackBar('Đặt lịch hẹn thành công', 'OK');
-    //   this.router.navigate(['/']); 
-    // } else {
-    //   this.openSnackBar('Đặt lịch hẹn thất bại', 'OK');
-    //   console.error('Form không hợp lệ');
-    // }
+    if (this.isFormValid()) {
+      this.bacsiService.themPhieuDangKy(this.pdk).subscribe(
+        response => {
+          console.log(this.pdk); 
+          console.log('Phản hồi từ server:', response);
+          this.openSnackBar('Đặt lịch hẹn thành công', 'OK');
+          this.router.navigate(['/']); 
+        },
+        (error: HttpErrorResponse) => {
+          console.error('Lỗi khi gọi API:', error);
+          this.openSnackBar('Đặt lịch hẹn thất bại', 'OK');
+        }
+      );
+    } else {
+      this.openSnackBar('Form không hợp lệ', 'OK');
+      console.error('Form không hợp lệ');
+    }
   }
-  
 
-  // isFormValid(): boolean {
-  //   // Kiểm tra các điều kiện của form, ví dụ:
-  //   return this.pdk.tenBenhNhan && this.pdk.ngaySinh && this.pdk.gioiTinh && this.pdk.sdt &&
-  //    this.pdk.diaChi && this.pdk.bacSi && this.pdk.ngayKham && this.pdk.khungGioKham;
-  // }
-  
+  isFormValid(): boolean {
+    return this.pdk.bacSi && this.pdk.ngayKham;
+  }
 }

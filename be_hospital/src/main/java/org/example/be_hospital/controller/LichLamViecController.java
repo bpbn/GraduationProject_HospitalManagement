@@ -35,8 +35,8 @@ public class LichLamViecController {
     @GetMapping("/bacsitheongaylam")
     public List<BacSi> layBacSiTheoNgayLam(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ngayLam) {
         List<BacSi> bacSiList = lichLamViecDAO.layBacSiTheoNgayLam(ngayLam);
-        System.out.println("Ngày làm: " + ngayLam);
-        System.out.println("Danh sách bác sĩ: " + bacSiList);
+//        System.out.println("Ngày làm: " + ngayLam);
+//        System.out.println("Danh sách bác sĩ: " + bacSiList);
         return bacSiList;
     }
 
